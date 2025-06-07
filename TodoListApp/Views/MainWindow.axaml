@@ -1,0 +1,186 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TodoListApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="TodoListApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TodoListApp">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid Margin="20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <!-- Header -->
+    <TextBlock Grid.Row="0" Text="Todo List Application" 
+               FontSize="24" FontWeight="Bold" 
+               HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+    <!-- Add Todo Section -->
+    <Border Grid.Row="1" Background="#222" CornerRadius="5" Padding="15" Margin="0,0,0,15">
+      <StackPanel>
+        <TextBlock Text="Add New Todo" FontWeight="Bold" Margin="0,0,0,10"/>
+        
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <TextBox Grid.Row="0" Grid.Column="0" 
+                   Text="{Binding NewTodoTitle}" 
+                   Watermark="Enter todo title..."
+                   Margin="0,0,10,5"/>
+
+          <TextBox Grid.Row="1" Grid.Column="0" 
+                   Text="{Binding NewTodoDescription}" 
+                   Watermark="Enter description (optional)..."
+                   Margin="0,0,10,10"/>
+
+          <Button Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                  Content="Add Todo" 
+                  Command="{Binding AddTodoCommand}"
+                  VerticalAlignment="Center"
+                  Classes="accent"/>
+        </Grid>
+      </StackPanel>
+    </Border>
+
+    <!-- Todo List -->
+    <Border Grid.Row="2" Background="#222" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5">
+      <ScrollViewer>
+        <ListBox ItemsSource="{Binding TodoItems}" 
+                 SelectedItem="{Binding SelectedTodoItem}"
+                 Background="Transparent">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Border Padding="15,10" BorderBrush="#F0F0F0" BorderThickness="0,0,0,1">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+
+                  <!-- Checkbox -->
+                  <CheckBox Grid.Column="0" 
+                            IsChecked="{Binding IsCompleted}"
+                            VerticalAlignment="Top" Margin="0,0,15,0"/>
+
+                  <!-- Todo Content -->
+                  <StackPanel Grid.Column="1">
+                    <TextBlock Text="{Binding Title}" 
+                               FontWeight="SemiBold" FontSize="14">
+                      <TextBlock.Styles>
+                        <Style Selector="TextBlock[Tag=True]">
+                          <Setter Property="TextDecorations" Value="Strikethrough"/>
+                          <Setter Property="Foreground" Value="Gray"/>
+                        </Style>
+                      </TextBlock.Styles>
+                      <TextBlock.Tag>
+                        <Binding Path="IsCompleted"/>
+                      </TextBlock.Tag>
+                    </TextBlock>
+                    
+                    <TextBlock Text="{Binding Description}" 
+                               FontSize="12" Foreground="Gray" 
+                               IsVisible="{Binding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                               TextWrapping="Wrap" Margin="0,2,0,0"/>
+                    
+                    <TextBlock Text="{Binding CreatedDate, StringFormat='Created: {0:MM/dd/yyyy HH:mm}'}" 
+                               FontSize="10" Foreground="DarkGray" Margin="0,5,0,0"/>
+                  </StackPanel>
+
+                  <!-- Status -->
+                  <Border Grid.Column="2" 
+                          CornerRadius="3" Padding="8,4" Margin="10,0"
+                          VerticalAlignment="Center">
+                    <Border.Styles>
+                      <Style Selector="Border">
+                        <Setter Property="Background" Value="Orange"/>
+                        <Style Selector="^[Tag=True]">
+                          <Setter Property="Background" Value="Green"/>
+                        </Style>
+                      </Style>
+                    </Border.Styles>
+                    <Border.Tag>
+                      <Binding Path="IsCompleted"/>
+                    </Border.Tag>
+                    
+                    <TextBlock FontSize="12" FontWeight="Medium" Foreground="White">
+                      <TextBlock.Styles>
+                        <Style Selector="TextBlock">
+                          <Setter Property="Text" Value="Pending"/>
+                          <Style Selector="^[Tag=True]">
+                            <Setter Property="Text" Value="Completed"/>
+                          </Style>
+                        </Style>
+                      </TextBlock.Styles>
+                      <TextBlock.Tag>
+                        <Binding Path="IsCompleted"/>
+                      </TextBlock.Tag>
+                    </TextBlock>
+                  </Border>
+
+                  <!-- Delete Button -->
+                  <Button Grid.Column="3" 
+                          Content="Delete" 
+                          Command="{Binding $parent[ListBox].((vm:MainWindowViewModel)DataContext).DeleteTodoCommand}"
+                          CommandParameter="{Binding}"
+                          Classes="danger"
+                          VerticalAlignment="Center"/>
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </ScrollViewer>
+    </Border>
+
+    <!-- Statistics and Actions -->
+    <Border Grid.Row="3" Background="#222" CornerRadius="5" Padding="15" Margin="0,15,0,0">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Statistics -->
+        <StackPanel Grid.Column="0" Orientation="Horizontal">
+          <TextBlock Text="Total: " FontWeight="SemiBold"/>
+          <TextBlock Text="{Binding TotalItems}" Margin="0,0,20,0"/>
+          
+          <TextBlock Text="Completed: " FontWeight="SemiBold" Foreground="Green"/>
+          <TextBlock Text="{Binding CompletedItems}" Foreground="Green" Margin="0,0,20,0"/>
+          
+          <TextBlock Text="Pending: " FontWeight="SemiBold" Foreground="Orange"/>
+          <TextBlock Text="{Binding PendingItems}" Foreground="Orange"/>
+        </StackPanel>
+
+        <!-- Clear Completed Button -->
+        <Button Grid.Column="1" 
+                Content="Clear Completed" 
+                Command="{Binding ClearCompletedCommand}"
+                Classes="accent"/>
+      </Grid>
+    </Border>
+  </Grid>
+</Window>
