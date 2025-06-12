@@ -1,40 +1,83 @@
-<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="TodoListApp.App"
-             xmlns:local="using:TodoListApp"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+<Application
+    RequestedThemeVariant="Default"
+    x:Class="TodoListApp.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converters="using:TodoListApp.Converters"
+    xmlns:local="using:TodoListApp"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
-    <Application.DataTemplates>
-        <local:ViewLocator/>
-    </Application.DataTemplates>
-  
+    <Application.Resources>
+        <converters:BoolToTextDecorationConverter x:Key="BoolToTextDecorationConverter" />
+        <converters:BoolToForegroundConverter x:Key="BoolToForegroundConverter" />
+        <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
+        <converters:PriorityToClassConverter x:Key="PriorityToClassConverter" />
+        <converters:CategoryToClassConverter x:Key="CategoryToClassConverter" />
+        <converters:ProgressToWidthConverter x:Key="ProgressToWidthConverter" />
+        <converters:DateTimeToNullableConverter x:Key="DateTimeToNullableConverter" />
+    </Application.Resources>
+
+    <!-- <Application.DataTemplates> -->
+    <!--    -->
+    <!--     <local:ViewLocator /> -->
+    <!-- </Application.DataTemplates> -->
+
+
     <Application.Styles>
         <FluentTheme />
-        
-        <!-- Custom Button Styles -->
-        <Style Selector="Button.accent">
-            <Setter Property="Background" Value="#0078D4"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="12,6"/>
-            <Setter Property="CornerRadius" Value="3"/>
+
+        <!--  Custom Application Styles  -->
+        <Style Selector="Window">
+            <Setter Property="FontFamily" Value="Segoe UI, Arial, sans-serif" />
         </Style>
-    
-        <Style Selector="Button.accent:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#106EBE"/>
+
+        <!--  Scrollbar Styling  -->
+        <Style Selector="ScrollViewer">
+            <Setter Property="AllowAutoHide" Value="True" />
         </Style>
-    
-        <Style Selector="Button.danger">
-            <Setter Property="Background" Value="#D83B01"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="8,4"/>
-            <Setter Property="CornerRadius" Value="3"/>
-            <Setter Property="FontSize" Value="12"/>
+
+        <!--  ComboBox Styling  -->
+        <Style Selector="ComboBox">
+            <Setter Property="Cursor" Value="Hand" />
         </Style>
-    
-        <Style Selector="Button.danger:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#A4262C"/>
+
+        <!--  DatePicker Styling  -->
+        <Style Selector="DatePicker">
+            <Setter Property="Cursor" Value="Hand" />
         </Style>
-        
+
+        <!--  Checkbox custom styling  -->
+        <Style Selector="CheckBox">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Duration="0:0:0.2" Property="RenderTransform" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="CheckBox:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.1)" />
+        </Style>
+
+        <!--  Enhanced hover effects for interactive elements  -->
+        <Style Selector="ComboBox:pointerover">
+            <Setter Property="BorderBrush" Value="#6366F1" />
+        </Style>
+
+        <!-- <Style Selector="DatePicker:pointerover"> -->
+        <!--     <Setter Property="BorderBrush" Value="#6366F1" /> -->
+        <!-- </Style> -->
+
+        <!--  Smooth transitions for all interactive elements  -->
+        <Style Selector="ComboBox, TextBox">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Duration="0:0:0.2" Property="BorderBrush" />
+                    <BrushTransition Duration="0:0:0.2" Property="Background" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+
     </Application.Styles>
 </Application>

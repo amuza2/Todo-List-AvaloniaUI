@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -8,101 +11,197 @@ namespace TodoListApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] private string _newTodoTitle = string.Empty;
+    [ObservableProperty]
+    private ObservableCollection<TodoItem> _tasks = new();
 
-    [ObservableProperty] private string _newTodoDescription = string.Empty;
+    [ObservableProperty]
+    private ObservableCollection<TodoItem> _filteredTasks = new();
 
-    [ObservableProperty] private TodoItem? _selectedTodoItem;
+    [ObservableProperty]
+    private string _newTaskTitle = string.Empty;
 
-    public ObservableCollection<TodoItem> TodoItems { get; } = new();
+    [ObservableProperty]
+    private string _newTaskDescription = string.Empty;
 
+    [ObservableProperty] private DateTime _newTaskDueDate;
 
+    [ObservableProperty]
+    private int _newTaskPriority = 1; // Medium
 
-    [RelayCommand]
-    private void AddTodo()
-    {
-        if (string.IsNullOrWhiteSpace(NewTodoTitle))
-            return;
+    [ObservableProperty]
+    private int _newTaskCategory = 0; // Academic
 
-        var newTodo = new TodoItem(NewTodoTitle, NewTodoDescription);
-        TodoItems.Add(newTodo);
+    [ObservableProperty]
+    private int _filterIndex = 0; // All tasks
 
-        // Clear the input fields
-        NewTodoTitle = string.Empty;
-        NewTodoDescription = string.Empty;
-    }
+    [ObservableProperty]
+    private int _completedTasksCount;
 
-    [RelayCommand]
-    private void DeleteTodo(TodoItem? todoItem)
-    {
-        if (todoItem != null && TodoItems.Contains(todoItem))
-        {
-            TodoItems.Remove(todoItem);
+    [ObservableProperty]
+    private int _totalTasksCount;
 
-            // Clear selection if the deleted item was selected
-            if (SelectedTodoItem == todoItem)
-                SelectedTodoItem = null;
-        }
-    }
+    [ObservableProperty]
+    private int _pendingTasksCount;
 
-    [RelayCommand]
-    private void ToggleComplete(TodoItem? todoItem)
-    {
-        if (todoItem != null)
-        {
-            todoItem.IsCompleted = !todoItem.IsCompleted;
-        }
-    }
-
-    [RelayCommand]
-    private void ClearCompleted()
-    {
-        var completedItems = TodoItems.Where(x => x.IsCompleted).ToList();
-        foreach (var item in completedItems)
-        {
-            TodoItems.Remove(item);
-        }
-    }
-
-    // Computed properties for statistics
-    public int TotalItems => TodoItems.Count;
-    public int CompletedItems => TodoItems.Count(x => x.IsCompleted);
-    public int PendingItems => TodoItems.Count(x => !x.IsCompleted);
+    [ObservableProperty]
+    private double _progressPercentage;
 
     public MainWindowViewModel()
     {
-        // Subscribe to collection changes to update statistics
-        TodoItems.CollectionChanged += (s, e) =>
-        {
-            OnPropertyChanged(nameof(TotalItems));
-            OnPropertyChanged(nameof(CompletedItems));
-            OnPropertyChanged(nameof(PendingItems));
-
-            // Also subscribe to item property changes for completion status
-            if (e.NewItems != null)
-            {
-                foreach (TodoItem item in e.NewItems)
-                {
-                    SubscribeToItemPropertyChanges(item);
-                }
-            }
-        };
-
-        // Add sample data
-        TodoItems.Add(new TodoItem("Learn Avalonia UI", "Understand the basics of Avalonia UI framework"));
-        TodoItems.Add(new TodoItem("Practice MVVM", "Get comfortable with MVVM pattern"));
-        TodoItems.Add(new TodoItem("Build Todo App", "Create a functional todo application"));
+        _newTaskDueDate = DateTime.UtcNow.Date;;
+        Tasks.CollectionChanged += OnTasksCollectionChanged;
+        UpdateFilteredTasks();
+        UpdateStats();
+        
+        // Add some sample tasks for demonstration
+        AddSampleTasks();
     }
-    
-    private void SubscribeToItemPropertyChanges(TodoItem item)
+
+    private void AddSampleTasks()
     {
-        item.PropertyChanged += (sender, args) =>
+        Tasks.Add(new TodoItem
         {
-            if (args.PropertyName == nameof(TodoItem.IsCompleted))
+            Title = "Complete Math Assignment",
+            Description = "Finish algebra homework problems 1-20",
+            DueDate = DateTime.Today.AddDays(2),
+            Priority = TaskPriority.High,
+            Category = TaskCategory.Academic
+        });
+
+        Tasks.Add(new TodoItem
+        {
+            Title = "Study for History Exam",
+            Description = "Review chapters 5-8, focus on key dates and events",
+            DueDate = DateTime.Today.AddDays(5),
+            Priority = TaskPriority.High,
+            Category = TaskCategory.Academic
+        });
+
+        Tasks.Add(new TodoItem
+        {
+            Title = "Morning Workout",
+            Description = "30 minutes cardio + strength training",
+            DueDate = DateTime.Today,
+            Priority = TaskPriority.Medium,
+            Category = TaskCategory.Health
+        });
+
+        Tasks.Add(new TodoItem
+        {
+            Title = "Call Mom",
+            Description = "Weekly check-in call",
+            DueDate = DateTime.Today.AddDays(1),
+            Priority = TaskPriority.Low,
+            Category = TaskCategory.Personal,
+            IsCompleted = true
+        });
+
+        Tasks.Add(new TodoItem
+        {
+            Title = "Update Resume",
+            Description = "Add recent project experience and skills",
+            DueDate = DateTime.Today.AddDays(7),
+            Priority = TaskPriority.Medium,
+            Category = TaskCategory.Work
+        });
+    }
+
+    private void OnTasksCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        if (e.OldItems != null)
+        {
+            foreach (TodoItem item in e.OldItems)
             {
-                OnPropertyChanged(nameof(CompletedItems));
-                OnPropertyChanged(nameof(PendingItems));
+                item.PropertyChanged -= OnTaskPropertyChanged;
             }
+        }
+
+        if (e.NewItems != null)
+        {
+            foreach (TodoItem item in e.NewItems)
+            {
+                item.PropertyChanged += OnTaskPropertyChanged;
+            }
+        }
+
+        UpdateFilteredTasks();
+        UpdateStats();
+    }
+
+    private void OnTaskPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(TodoItem.IsCompleted))
+        {
+            UpdateStats();
+            UpdateFilteredTasks();
+        }
+    }
+
+    [RelayCommand]
+    private void AddTask()
+    {
+        if (string.IsNullOrWhiteSpace(NewTaskTitle))
+            return;
+
+        var newTask = new TodoItem
+        {
+            Title = NewTaskTitle.Trim(),
+            Description = NewTaskDescription?.Trim() ?? string.Empty,
+            DueDate = NewTaskDueDate,
+            Priority = (TaskPriority)NewTaskPriority,
+            Category = (TaskCategory)NewTaskCategory
         };
+
+        Tasks.Add(newTask);
+
+        // Clear form
+        NewTaskTitle = string.Empty;
+        NewTaskDescription = string.Empty;
+        NewTaskDueDate = DateTime.Today.AddDays(1);
+        NewTaskPriority = 1;
+        NewTaskCategory = 0;
+    }
+
+    [RelayCommand]
+    private void DeleteTask(TodoItem task)
+    {
+        Tasks.Remove(task);
+    }
+
+    [RelayCommand]
+    private void ClearAllTasks()
+    {
+        Tasks.Clear();
+    }
+
+    partial void OnFilterIndexChanged(int value)
+    {
+        UpdateFilteredTasks();
+    }
+
+    private void UpdateFilteredTasks()
+    {
+        var filtered = FilterIndex switch
+        {
+            0 => Tasks.OrderBy(t => t.IsCompleted).ThenByDescending(t => (int)t.Priority).ThenBy(t => t.DueDate),
+            1 => Tasks.Where(t => !t.IsCompleted).OrderByDescending(t => (int)t.Priority).ThenBy(t => t.DueDate),
+            2 => Tasks.Where(t => t.IsCompleted).OrderByDescending(t => t.CreatedDate),
+            3 => Tasks.Where(t => t.Priority == TaskPriority.High).OrderBy(t => t.IsCompleted).ThenBy(t => t.DueDate),
+            _ => Tasks.OrderBy(t => t.IsCompleted).ThenByDescending(t => (int)t.Priority).ThenBy(t => t.DueDate)
+        };
+
+        FilteredTasks.Clear();
+        foreach (var task in filtered)
+        {
+            FilteredTasks.Add(task);
+        }
+    }
+
+    private void UpdateStats()
+    {
+        TotalTasksCount = Tasks.Count;
+        CompletedTasksCount = Tasks.Count(t => t.IsCompleted);
+        PendingTasksCount = TotalTasksCount - CompletedTasksCount;
+        ProgressPercentage = TotalTasksCount > 0 ? (double)CompletedTasksCount / TotalTasksCount * 100 : 0;
     }
 }
