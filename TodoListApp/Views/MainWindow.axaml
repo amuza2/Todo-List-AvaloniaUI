@@ -184,14 +184,17 @@
             Background="#6366F1"
             CornerRadius="0,0,24,24"
             Grid.Row="0"
-            Padding="24,20">
+            Padding="24,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Orientation="Vertical">
+                <StackPanel
+                    Grid.Column="0"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center">
                     <TextBlock
                         FontSize="28"
                         FontWeight="Bold"
@@ -204,34 +207,67 @@
                         Text="Your personal productivity companion" />
                 </StackPanel>
 
-                <StackPanel
-                    Grid.Column="1"
-                    Orientation="Horizontal"
-                    Spacing="16"
-                    VerticalAlignment="Center">
-                    <TextBlock
-                        FontSize="24"
-                        FontWeight="Bold"
-                        Foreground="White"
-                        Text="{Binding CompletedTasksCount}" />
-                    <TextBlock
-                        FontSize="12"
-                        Foreground="#C7D2FE"
-                        Margin="0,0,0,4"
-                        Text="Completed"
-                        VerticalAlignment="Bottom" />
-                    <TextBlock
-                        FontSize="24"
-                        FontWeight="Bold"
-                        Foreground="White"
-                        Margin="16,0,0,0"
-                        Text="{Binding TotalTasksCount}" />
-                    <TextBlock
-                        FontSize="12"
-                        Foreground="#C7D2FE"
-                        Margin="0,0,0,4"
-                        Text="Total"
-                        VerticalAlignment="Bottom" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <!--  Quick Stats  -->
+                    <Border
+                        Background="#2D2D2D"
+                        CornerRadius="12"
+                        Padding="16">
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="#E0E0E0"
+                                HorizontalAlignment="Center"
+                                Text="Today's Progress 📊" />
+                            <Grid Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        Foreground="WhiteSmoke"
+                                        HorizontalAlignment="Center"
+                                        Text="{Binding TotalTasksCount}" />
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#A0A0A0"
+                                        HorizontalAlignment="Center"
+                                        Text="Total" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="20,0">
+                                    <TextBlock
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        Foreground="#FF6B6B"
+                                        HorizontalAlignment="Center"
+                                        Text="{Binding PendingTasksCount}" />
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#A0A0A0"
+                                        HorizontalAlignment="Center"
+                                        Text="Pending" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        Foreground="ForestGreen"
+                                        HorizontalAlignment="Center"
+                                        Text="{Binding CompletedTasksCount}" />
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#A0A0A0"
+                                        HorizontalAlignment="Center"
+                                        Text="Completed" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Border>
@@ -251,8 +287,8 @@
                 Grid.Column="0"
                 Margin="0,0,12,0"
                 Padding="20">
-                <ScrollViewer Margin="-15,0,0,0" VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="10" Spacing="16">
+                <ScrollViewer Margin="-15,0,-10,0" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="8,0,20,0" Spacing="16">
                         <TextBlock
                             FontSize="20"
                             FontWeight="Bold"
@@ -325,6 +361,7 @@
                                 Background="#2D2D2D"
                                 CornerRadius="12"
                                 Foreground="#E0E0E0"
+                                HorizontalAlignment="Stretch"
                                 Padding="16,12"
                                 SelectedDate="{Binding NewTaskDueDate}" />
                         </StackPanel>
@@ -335,54 +372,10 @@
                             Content="Add Task ➕"
                             FontSize="16"
                             HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
                             Margin="0,8,0,0" />
 
-                        <!--  Quick Stats  -->
-                        <Border
-                            Background="#2D2D2D"
-                            CornerRadius="12"
-                            Margin="0,16,0,0"
-                            Padding="16">
-                            <StackPanel Spacing="8">
-                                <TextBlock
-                                    FontSize="16"
-                                    FontWeight="Bold"
-                                    Foreground="#E0E0E0"
-                                    Text="Today's Progress 📊" />
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock
-                                            FontSize="20"
-                                            FontWeight="Bold"
-                                            Foreground="#06D6A0"
-                                            HorizontalAlignment="Center"
-                                            Text="{Binding CompletedTasksCount}" />
-                                        <TextBlock
-                                            FontSize="12"
-                                            Foreground="#A0A0A0"
-                                            HorizontalAlignment="Center"
-                                            Text="Completed" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock
-                                            FontSize="20"
-                                            FontWeight="Bold"
-                                            Foreground="#FF6B6B"
-                                            HorizontalAlignment="Center"
-                                            Text="{Binding PendingTasksCount}" />
-                                        <TextBlock
-                                            FontSize="12"
-                                            Foreground="#A0A0A0"
-                                            HorizontalAlignment="Center"
-                                            Text="Pending" />
-                                    </StackPanel>
-                                </Grid>
-                            </StackPanel>
-                        </Border>
+
                     </StackPanel>
                 </ScrollViewer>
             </Border>
