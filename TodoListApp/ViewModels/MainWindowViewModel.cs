@@ -45,6 +45,11 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty]
     private double _progressPercentage;
+    
+    [ObservableProperty]
+    private TodoItem? _selectedTask;
+    
+    [ObservableProperty] private string _buttonText;
 
     public MainWindowViewModel()
     {
@@ -52,9 +57,29 @@ public partial class MainWindowViewModel : ViewModelBase
         Tasks.CollectionChanged += OnTasksCollectionChanged;
         UpdateFilteredTasks();
         UpdateStats();
+        ButtonText = "Add";
         
         // Add some sample tasks for demonstration
-        // AddSampleTasks();
+        AddSampleTasks();
+    }
+
+    partial void OnSelectedTaskChanged(TodoItem? value)
+    {
+        if (value is not null)
+        {
+            NewTaskTitle = value.Title;
+            NewTaskDescription = value.Description;
+            NewTaskPriority = (int)value.Priority;
+            NewTaskCategory = (int)value.Category;
+            NewTaskDueDate = value.DueDate;
+
+            ButtonText = "Update";
+        }
+        else
+        {
+            ButtonText = "Add";
+        }
+        
     }
 
     private void AddSampleTasks()
@@ -142,17 +167,30 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (string.IsNullOrWhiteSpace(NewTaskTitle))
             return;
-
-        var newTask = new TodoItem
+        
+        // update task
+        if (SelectedTask != null)
         {
-            Title = NewTaskTitle.Trim(),
-            Description = NewTaskDescription?.Trim() ?? string.Empty,
-            DueDate = NewTaskDueDate,
-            Priority = (TaskPriority)NewTaskPriority,
-            Category = (TaskCategory)NewTaskCategory
-        };
+            SelectedTask.Title = NewTaskTitle.Trim();
+            SelectedTask.Description = NewTaskDescription.Trim() ?? string.Empty;
+            SelectedTask.DueDate = NewTaskDueDate;
+            SelectedTask.Priority = (TaskPriority)NewTaskPriority;
+            SelectedTask.Category = (TaskCategory)NewTaskCategory;
+        }
+        else
+        {
+            var newTask = new TodoItem
+            {
+                Title = NewTaskTitle.Trim(),
+                Description = NewTaskDescription?.Trim() ?? string.Empty,
+                DueDate = NewTaskDueDate,
+                Priority = (TaskPriority)NewTaskPriority,
+                Category = (TaskCategory)NewTaskCategory
+            };
 
-        Tasks.Add(newTask);
+            Tasks.Add(newTask);
+        }
+        
 
         // Clear form
         NewTaskTitle = string.Empty;

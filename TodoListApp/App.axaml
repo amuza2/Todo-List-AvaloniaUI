@@ -15,6 +15,7 @@
         <converters:CategoryToClassConverter x:Key="CategoryToClassConverter" />
         <converters:ProgressToWidthConverter x:Key="ProgressToWidthConverter" />
         <converters:DateTimeToNullableConverter x:Key="DateTimeToNullableConverter" />
+        <converters:PriorityToColorConverter x:Key="PriorityToColorConverter" />
     </Application.Resources>
 
     <!-- <Application.DataTemplates> -->
