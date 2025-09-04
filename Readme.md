@@ -2,6 +2,10 @@
 
 A colorful, engaging, and student-friendly todo list application built with Avalonia UI using the MVVM pattern and CommunityToolkit.Mvvm.
 
+## Screenshots 📸
+
+<img width="1032" height="864" alt="image" src="https://github.com/user-attachments/assets/16bec8ba-b516-4fa5-b594-b749b575ac6c" />
+
 ## Features
 
 ### Core Functionality
@@ -104,10 +108,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [ ] Drag and drop task reordering
 - [ ] Study session planning
 
-
-## Screenshots 📸
-
-<img width="1032" height="864" alt="image" src="https://github.com/user-attachments/assets/16bec8ba-b516-4fa5-b594-b749b575ac6c" />
 
 
 ## Support
