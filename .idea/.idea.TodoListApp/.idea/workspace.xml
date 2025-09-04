@@ -9,7 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cf09e665-d44e-47bf-9260-bc39d947a2e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +45,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Project.TodoListApp.executor": "Debug",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -89,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756981233250</updated>
-      <workItem from="1756981234874" duration="1533000" />
+      <workItem from="1756981234874" duration="2017000" />
     </task>
     <servers />
   </component>

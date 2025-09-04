@@ -54,7 +54,7 @@ public partial class MainWindowViewModel : ViewModelBase
         UpdateStats();
         
         // Add some sample tasks for demonstration
-        AddSampleTasks();
+        // AddSampleTasks();
     }
 
     private void AddSampleTasks()
