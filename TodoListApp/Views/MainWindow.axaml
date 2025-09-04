@@ -219,7 +219,7 @@
                                 FontWeight="Bold"
                                 Foreground="#E0E0E0"
                                 HorizontalAlignment="Center"
-                                Text="Today's Progress 📊" />
+                                Text="Today's Progress" />
                             <Grid Margin="10,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -293,7 +293,7 @@
                             FontSize="20"
                             FontWeight="Bold"
                             Foreground="#E0E0E0"
-                            Text="Add New Task 📝" />
+                            Text="Add New Task" />
 
                         <TextBox
                             Classes="modern-input"
@@ -331,9 +331,9 @@
                                 Grid.Row="1"
                                 Margin="0,0,8,0"
                                 SelectedIndex="{Binding NewTaskPriority}">
-                                <ComboBoxItem Content="🔥 High" />
-                                <ComboBoxItem Content="⚡ Medium" />
-                                <ComboBoxItem Content="🌱 Low" />
+                                <ComboBoxItem Content="High" />
+                                <ComboBoxItem Content="Medium" />
+                                <ComboBoxItem Content="Low" />
                             </ComboBox>
 
                             <TextBlock
@@ -348,10 +348,10 @@
                                 Grid.Row="1"
                                 Margin="8,0,0,0"
                                 SelectedIndex="{Binding NewTaskCategory}">
-                                <ComboBoxItem Content="📚 Academic" />
-                                <ComboBoxItem Content="💼 Work" />
-                                <ComboBoxItem Content="🏠 Personal" />
-                                <ComboBoxItem Content="💪 Health" />
+                                <ComboBoxItem Content="Academic" />
+                                <ComboBoxItem Content="Work" />
+                                <ComboBoxItem Content="Personal" />
+                                <ComboBoxItem Content="Health" />
                             </ComboBox>
                         </Grid>
 
@@ -369,7 +369,7 @@
                         <Button
                             Classes="modern-btn"
                             Command="{Binding AddTaskCommand}"
-                            Content="Add Task ➕"
+                            Content="Add Task"
                             FontSize="16"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Center"
@@ -407,7 +407,7 @@
                             FontWeight="Bold"
                             Foreground="#E0E0E0"
                             Grid.Column="0"
-                            Text="Your Tasks 📋"
+                            Text="Your Tasks"
                             VerticalAlignment="Center" />
 
                         <StackPanel
