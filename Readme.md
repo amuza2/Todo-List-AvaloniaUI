@@ -1,8 +1,8 @@
-# StudyBuddy - Student Todo App 🎓
+# StudyBuddy - Student Todo App
 
 A colorful, engaging, and student-friendly todo list application built with Avalonia UI using the MVVM pattern and CommunityToolkit.Mvvm.
 
-## Features ✨
+## Features
 
 ### Core Functionality
 - **Add Tasks**: Create tasks with titles, descriptions, due dates, priorities, and categories
@@ -13,7 +13,7 @@ A colorful, engaging, and student-friendly todo list application built with Aval
 ### Student-Friendly Design
 - **Colorful Interface**: Vibrant gradients and modern color scheme
 - **Engaging UI**: Playful emojis and student-focused terminology
-- **Priority System**: Visual priority indicators (🔥 High, ⚡ Medium, 🌱 Low)
+- **Priority System**: Visual priority indicators (High, Medium, Low)
 - **Category Organization**: Academic, Work, Personal, and Health categories
 - **Smooth Animations**: Hover effects, transitions, and micro-interactions
 
@@ -24,7 +24,7 @@ A colorful, engaging, and student-friendly todo list application built with Aval
 - **Real-time Updates**: Live statistics and progress tracking
 - **Cross-Platform**: Runs on Windows, macOS, and Linux
 
-## Project Structure 📁
+## Project Structure
 
 ```
 StudentTodoApp/
@@ -42,12 +42,10 @@ StudentTodoApp/
 └── Program.cs                   # Main program entry point
 ```
 
-## Getting Started 🚀
+## Getting Started
 
 ### Prerequisites
-- .NET 8.0 SDK or later
-- JetBrains Rider IDE (recommended for Pop!_OS)
-- Git
+- .NET 9.0 SDK or later
 
 ### Installation
 
@@ -72,73 +70,15 @@ StudentTodoApp/
    dotnet run
    ```
 
-### Development in Rider
-
-1. Open Rider IDE
-2. Choose "Open" and select the `StudentTodoApp` folder
-3. Wait for the project to load and restore packages
-4. Press F5 or click the Run button to start debugging
-
-## Usage Guide 📖
-
-### Adding Tasks
-1. Fill in the task title (required)
-2. Optionally add a description
-3. Set the priority level (High, Medium, Low)
-4. Choose a category (Academic, Work, Personal, Health)
-5. Select a due date
-6. Click "Add Task ➕"
-
-### Managing Tasks
-- **Complete Tasks**: Check the checkbox next to any task
-- **Delete Tasks**: Click the "Delete" button on individual tasks
-- **Filter Tasks**: Use the dropdown to filter by status or priority
-- **Clear All**: Remove all tasks at once
-
-### Visual Indicators
-- **Priority Colors**: High (red), Medium (yellow), Low (green)
-- **Category Colors**: Each category has its own color scheme
-- **Progress Bar**: Shows completion percentage
-- **Statistics**: Live counts of completed and pending tasks
-
-## Customization 🎨
-
-### Adding New Categories
-1. Update the `TaskCategory` enum in `Models/TodoItem.cs`
-2. Add the new category to the ComboBox in `MainWindow.axaml`
-3. Update the `CategoryToClassConverter` for styling
-4. Add corresponding CSS classes for colors
-
-### Styling Changes
-- Modify colors in the `Window.Styles` section of `MainWindow.axaml`
-- Update gradients and backgrounds in the Grid.Background definitions
-- Customize animations by adjusting `Transitions` properties
-
-### Adding Features
-- Extend the `TodoItem` model for new properties
-- Add corresponding UI elements in `MainWindow.axaml`
-- Implement new commands in `MainWindowViewModel.cs`
-
-## Architecture Details 🏗️
+## Architecture Details
 
 ### MVVM Implementation
 - **Model**: `TodoItem` - Observable model with property change notifications
 - **ViewModel**: `MainWindowViewModel` - Business logic, commands, and data management
 - **View**: `MainWindow.axaml` - UI definition with data binding
 
-### Key Patterns Used
-- **ObservableObject**: Base class for property change notifications
-- **ObservableProperty**: Source generators for automatic property implementation
-- **RelayCommand**: Command pattern implementation for UI actions
-- **Value Converters**: Transform data between model and view representations
 
-### Data Binding
-- Two-way binding for form inputs
-- One-way binding for display data
-- Command binding for user actions
-- Collection binding for task lists
-
-## Contributing 🤝
+## Contributing 
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -146,18 +86,11 @@ StudentTodoApp/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## Dependencies 📦
-
-- **Avalonia UI**: Cross-platform .NET UI framework
-- **CommunityToolkit.Mvvm**: MVVM helpers and source generators
-- **Avalonia.Themes.Fluent**: Modern Fluent Design theme
-- **Avalonia.Fonts.Inter**: Beautiful Inter font family
-
-## License 📄
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Roadmap 🗺️
+## Roadmap
 
 ### Planned Features
 - [ ] Task notifications and reminders
@@ -165,34 +98,30 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [ ] Task templates for common student activities
 - [ ] Time tracking and Pomodoro timer integration
 - [ ] Export tasks to calendar applications
-- [ ] Dark mode support
+- [ ] Switch between Dark and Light Mode
 - [ ] Keyboard shortcuts
 - [ ] Task search functionality
 - [ ] Drag and drop task reordering
 - [ ] Study session planning
 
-### Performance Improvements
-- [ ] Virtual scrolling for large task lists
-- [ ] Lazy loading of task data
-- [ ] Memory optimization for long-running sessions
 
 ## Screenshots 📸
 
-*Note: Add screenshots of your application here once it's running*
+<img width="1032" height="864" alt="image" src="https://github.com/user-attachments/assets/16bec8ba-b516-4fa5-b594-b749b575ac6c" />
 
-## Support 💬
+
+## Support
 
 If you encounter any issues or have questions:
 1. Check the existing issues on GitHub
 2. Create a new issue with detailed information
 3. Include your OS, .NET version, and error messages
 
-## Acknowledgments 🙏
+## Acknowledgments
 
 - Avalonia UI team for the excellent cross-platform framework
 - Microsoft for the Community Toolkit
 - The open-source community for inspiration and resources
 
----
 
-**Happy Studying! 🎓✨**
+**Happy Working or Studying!**
