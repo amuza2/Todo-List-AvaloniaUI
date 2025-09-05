@@ -32,10 +32,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] private DateTime _newTaskDueDate;
 
     [ObservableProperty]
-    private int _newTaskPriority = 1; // Medium
+    private TaskPriority _newTaskPriority = TaskPriority.Medium;
 
-    [ObservableProperty]
-    private int _newTaskCategory = 0; // Academic
+    [ObservableProperty] private TaskCategory _newTaskCategory = TaskCategory.Academic;
 
     [ObservableProperty]
     private int _filterIndex = 0; // All tasks
@@ -108,8 +107,8 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             NewTaskTitle = value.Title;
             NewTaskDescription = value.Description;
-            NewTaskPriority = (int)value.Priority;
-            NewTaskCategory = (int)value.Category;
+            NewTaskPriority = value.Priority;
+            NewTaskCategory = value.Category;
             NewTaskDueDate = value.DueDate;
 
             ButtonText = "Update";
@@ -118,7 +117,6 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             ButtonText = "Add";
         }
-        
     }
 
     [RelayCommand]
@@ -133,8 +131,8 @@ public partial class MainWindowViewModel : ViewModelBase
             SelectedTask.Title = NewTaskTitle.Trim();
             SelectedTask.Description = NewTaskDescription.Trim() ?? string.Empty;
             SelectedTask.DueDate = NewTaskDueDate;
-            SelectedTask.Priority = (TaskPriority)NewTaskPriority;
-            SelectedTask.Category = (TaskCategory)NewTaskCategory;
+            SelectedTask.Priority = NewTaskPriority;
+            SelectedTask.Category = NewTaskCategory;
             
             _jsonDataService.UpdateAsync(SelectedTask);
             SelectedTask = null;
@@ -146,8 +144,8 @@ public partial class MainWindowViewModel : ViewModelBase
                 Title = NewTaskTitle.Trim(),
                 Description = NewTaskDescription?.Trim() ?? string.Empty,
                 DueDate = NewTaskDueDate,
-                Priority = (TaskPriority)NewTaskPriority,
-                Category = (TaskCategory)NewTaskCategory
+                Priority = NewTaskPriority,
+                Category = NewTaskCategory
             };
 
             Tasks.Add(newTask);
@@ -156,14 +154,19 @@ public partial class MainWindowViewModel : ViewModelBase
             UpdateStats();
             UpdateFilteredTasks();
         }
-        
 
         // Clear form
         NewTaskTitle = string.Empty;
         NewTaskDescription = string.Empty;
         NewTaskDueDate = DateTime.Today.AddDays(1);
-        NewTaskPriority = 1;
-        NewTaskCategory = 0;
+        NewTaskPriority = TaskPriority.Medium;
+        NewTaskCategory = TaskCategory.Academic;
+    }
+
+    [RelayCommand]
+    private void CancelTask()
+    {
+        SelectedTask = null;
     }
 
     [RelayCommand]

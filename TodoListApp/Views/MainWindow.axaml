@@ -1,11 +1,11 @@
 <Window
     Height="650"
     Icon="/Assets/avalonia-logo.ico"
-    MinHeight="500"
+    MinHeight="550"
     MinWidth="600"
     Title="StudyBuddy - Your Todo Companion"
     Width="900"
-    d:DesignHeight="600"
+    d:DesignHeight="700"
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:Class="TodoListApp.Views.MainWindow"
@@ -40,6 +40,7 @@
         <!--  Button hover effects  -->
         <Style Selector="Button.modern-btn:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="#5B5CF6" />
+            <Setter Property="Foreground" Value="White" />
         </Style>
 
         <!--  Button pressed effects  -->
@@ -61,6 +62,28 @@
         <!--  Delete button hover  -->
         <Style Selector="Button.delete-btn:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="#DC2626" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <!--  Cancel button  -->
+        <Style Selector="Button.cancel-btn">
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+
+        <Style Selector="Button.cancel-btn:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="DimGray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
         </Style>
 
         <!--  TextBox style  -->
@@ -75,7 +98,7 @@
         </Style>
 
         <!--  TextBox focus style  -->
-        <Style Selector="TextBox.modern-input:focus">
+        <Style Selector="TextBox.modern-input:focus /template/ ContentPresenter">
             <Setter Property="BorderBrush" Value="#6366F1" />
         </Style>
 
@@ -182,6 +205,7 @@
         <!--  Header  -->
         <Border
             Background="#6366F1"
+            BoxShadow="0 4 4 0 #6366F1"
             CornerRadius="0,0,24,24"
             Grid.Row="0"
             Padding="24,10">
@@ -282,7 +306,7 @@
             <!--  Left Panel - Add Task  -->
             <Border
                 Background="#252525"
-                BoxShadow="0 4 16 0 #00000060"
+                BoxShadow="0 0 4 0 #6366F1"
                 CornerRadius="16"
                 Grid.Column="0"
                 Margin="0,0,12,0"
@@ -375,6 +399,14 @@
                             HorizontalContentAlignment="Center"
                             Margin="0,8,0,0" />
 
+                        <Button
+                            Classes="cancel-btn"
+                            Command="{Binding AddTaskCommand}"
+                            Content="Cancel"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            IsVisible="{Binding SelectedTask, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                            Margin="0,8,0,0" />
 
                     </StackPanel>
                 </ScrollViewer>
@@ -383,7 +415,7 @@
             <!--  Right Panel - Task List  -->
             <Border
                 Background="#252525"
-                BoxShadow="0 4 16 0 #00000060"
+                BoxShadow="0 0 4 0 #6366F1"
                 CornerRadius="16"
                 Grid.Column="1"
                 Margin="12,0,0,0"
@@ -429,7 +461,6 @@
                                 <ComboBoxItem Content="High Priority" />
                             </ComboBox>
                             <Button
-                                Background="#EF4444"
                                 Classes="modern-btn"
                                 Command="{Binding ClearAllTasksCommand}"
                                 Content="Clear All"
