@@ -1,9 +1,16 @@
+using System;
+using System.IO;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
+using TodoListApp.Extensions;
+using TodoListApp.Services;
 using TodoListApp.ViewModels;
 using TodoListApp.Views;
 
@@ -18,14 +25,36 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        BindingPlugins.DataValidators.RemoveAt(0);
+        
+        var collection = new ServiceCollection();
+        
+        var logsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs");
+        Directory.CreateDirectory(logsDirectory);
+        
+        collection.AddLogging(builder =>
+        {
+            builder.AddConsole();
+            builder.AddProvider(new FileLoggerProvider(Path.Combine(logsDirectory, "app.log")));
+            builder.SetMinimumLevel(LogLevel.Information);
+        });
+        
+        collection.AddSingleton<IJsonDataService>(p =>
+            new JsonDataService(p.GetRequiredService<ILogger<JsonDataService>>()
+                ));
+        
+        collection.AddSingleton<MainWindowViewModel>();
+        
+        
+        var services = collection.BuildServiceProvider();
+        var vm = services.GetRequiredService<MainWindowViewModel>();
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
-            // DisableAvaloniaDataAnnotationValidation();
+            DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = vm,
             };
         }
 

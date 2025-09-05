@@ -1,50 +1,36 @@
 using System;
+using System.Text.Json.Serialization;
 using CommunityToolkit.Mvvm.ComponentModel;
+using TodoListApp.ViewModels;
 
 namespace TodoListApp.Models;
 
-public partial class TodoItem : ObservableObject
+public partial class TodoItem : ViewModelBase
 {
-    [ObservableProperty]
+    [ObservableProperty] [JsonPropertyName("id")] 
+    private int _id;
+    
+    [ObservableProperty] [JsonPropertyName("title")]
     private string _title = string.Empty;
 
-    [ObservableProperty]
+    [ObservableProperty] [JsonPropertyName("description")]
     private string _description = string.Empty;
 
-    [ObservableProperty]
+    [ObservableProperty] [JsonPropertyName("isCompleted")]
     private bool _isCompleted;
 
-    [ObservableProperty]
+    [ObservableProperty] [JsonPropertyName("dueDate")]
     private DateTime _dueDate = DateTime.Today;
 
-    [ObservableProperty]
+    [ObservableProperty] [JsonPropertyName("priority")]
     private TaskPriority _priority = TaskPriority.Medium;
 
-    [ObservableProperty]
+    [ObservableProperty] [JsonPropertyName("category")]
     private TaskCategory _category = TaskCategory.Academic;
 
-    [ObservableProperty]
+    [ObservableProperty] [JsonPropertyName("createdDate")]
     private DateTime _createdDate = DateTime.Now;
-
-    public string Id { get; set; } = Guid.NewGuid().ToString();
-
-    public string PriorityDisplay => Priority switch
-    {
-        TaskPriority.High => "🔥 High",
-        TaskPriority.Medium => "⚡ Medium",
-        TaskPriority.Low => "🌱 Low",
-        _ => "⚡ Medium"
-    };
-
-    public string CategoryDisplay => Category switch
-    {
-        TaskCategory.Academic => "📚 Academic",
-        TaskCategory.Work => "💼 Work",
-        TaskCategory.Personal => "🏠 Personal",
-        TaskCategory.Health => "💪 Health",
-        _ => "📚 Academic"
-    };
-
+    
     public bool IsOverdue => !IsCompleted && DueDate < DateTime.Today;
 
     public bool IsDueToday => DueDate.Date == DateTime.Today;
@@ -53,7 +39,6 @@ public partial class TodoItem : ObservableObject
 
     partial void OnIsCompletedChanged(bool value)
     {
-        // You can add completion logic here if needed
         OnPropertyChanged(nameof(IsOverdue));
         OnPropertyChanged(nameof(IsDueSoon));
     }

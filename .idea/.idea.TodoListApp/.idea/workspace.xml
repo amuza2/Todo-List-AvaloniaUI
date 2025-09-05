@@ -8,12 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf09e665-d44e-47bf-9260-bc39d947a2e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TodoListApp/Converters/PriorityToColorConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/avalonia.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/Extensions/FileLogger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/Extensions/FileLoggerProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/Services/IJsonDataService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/Services/JsonDataService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/App.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/Models/TodoItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Models/TodoItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/TodoListApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/TodoListApp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +46,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="32EMMmbAqcTca0FzV91PMDoo8EO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -96,7 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756981233250</updated>
       <workItem from="1756981234874" duration="4775000" />
-      <workItem from="1756997109259" duration="3811000" />
+      <workItem from="1756997109259" duration="23526000" />
     </task>
     <servers />
   </component>
