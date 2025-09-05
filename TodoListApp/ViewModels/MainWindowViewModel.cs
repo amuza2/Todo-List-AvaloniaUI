@@ -1,16 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TodoListApp.Models;
+using TodoListApp.Services;
 
 namespace TodoListApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    private readonly IJsonDataService _jsonDataService;
+    
     [ObservableProperty]
     private ObservableCollection<TodoItem> _tasks = new();
 
@@ -51,85 +57,19 @@ public partial class MainWindowViewModel : ViewModelBase
     
     [ObservableProperty] private string _buttonText;
 
-    public MainWindowViewModel()
+    public MainWindowViewModel(IJsonDataService jsonDataService)
     {
-        _newTaskDueDate = DateTime.UtcNow.Date;;
+        _jsonDataService = jsonDataService;
+        _newTaskDueDate = DateTime.UtcNow.Date;
         Tasks.CollectionChanged += OnTasksCollectionChanged;
-        UpdateFilteredTasks();
-        UpdateStats();
         ButtonText = "Add";
         
         // Add some sample tasks for demonstration
-        AddSampleTasks();
+        // _ = AddSampleTasks();
+        _ = LoadTasksAsync();
     }
 
-    partial void OnSelectedTaskChanged(TodoItem? value)
-    {
-        if (value is not null)
-        {
-            NewTaskTitle = value.Title;
-            NewTaskDescription = value.Description;
-            NewTaskPriority = (int)value.Priority;
-            NewTaskCategory = (int)value.Category;
-            NewTaskDueDate = value.DueDate;
-
-            ButtonText = "Update";
-        }
-        else
-        {
-            ButtonText = "Add";
-        }
-        
-    }
-
-    private void AddSampleTasks()
-    {
-        Tasks.Add(new TodoItem
-        {
-            Title = "Complete Math Assignment",
-            Description = "Finish algebra homework problems 1-20",
-            DueDate = DateTime.Today.AddDays(2),
-            Priority = TaskPriority.High,
-            Category = TaskCategory.Academic
-        });
-
-        Tasks.Add(new TodoItem
-        {
-            Title = "Study for History Exam",
-            Description = "Review chapters 5-8, focus on key dates and events",
-            DueDate = DateTime.Today.AddDays(5),
-            Priority = TaskPriority.High,
-            Category = TaskCategory.Academic
-        });
-
-        Tasks.Add(new TodoItem
-        {
-            Title = "Morning Workout",
-            Description = "30 minutes cardio + strength training",
-            DueDate = DateTime.Today,
-            Priority = TaskPriority.Medium,
-            Category = TaskCategory.Health
-        });
-
-        Tasks.Add(new TodoItem
-        {
-            Title = "Call Mom",
-            Description = "Weekly check-in call",
-            DueDate = DateTime.Today.AddDays(1),
-            Priority = TaskPriority.Low,
-            Category = TaskCategory.Personal,
-            IsCompleted = true
-        });
-
-        Tasks.Add(new TodoItem
-        {
-            Title = "Update Resume",
-            Description = "Add recent project experience and skills",
-            DueDate = DateTime.Today.AddDays(7),
-            Priority = TaskPriority.Medium,
-            Category = TaskCategory.Work
-        });
-    }
+    public MainWindowViewModel() : this(null!){ }
 
     private void OnTasksCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
@@ -162,6 +102,86 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
 
+    partial void OnSelectedTaskChanged(TodoItem? value)
+    {
+        if (value is not null)
+        {
+            NewTaskTitle = value.Title;
+            NewTaskDescription = value.Description;
+            NewTaskPriority = (int)value.Priority;
+            NewTaskCategory = (int)value.Category;
+            NewTaskDueDate = value.DueDate;
+
+            ButtonText = "Update";
+        }
+        else
+        {
+            ButtonText = "Add";
+        }
+        
+    }
+
+    private async Task AddSampleTasks()
+    {
+        List<TodoItem> items = await _jsonDataService.GetAllAsync();
+        if (items.Count > 0)
+        {
+            foreach (var item in items)
+            {
+                Tasks.Add(item);
+            }
+        }
+        else
+        {
+            Tasks.Add(new TodoItem
+            {
+                Title = "Complete Math Assignment",
+                Description = "Finish algebra homework problems 1-20",
+                DueDate = DateTime.Today.AddDays(2),
+                Priority = TaskPriority.High,
+                Category = TaskCategory.Academic
+            });
+
+            Tasks.Add(new TodoItem
+            {
+                Title = "Study for History Exam",
+                Description = "Review chapters 5-8, focus on key dates and events",
+                DueDate = DateTime.Today.AddDays(5),
+                Priority = TaskPriority.High,
+                Category = TaskCategory.Academic
+            });
+
+            Tasks.Add(new TodoItem
+            {
+                Title = "Morning Workout",
+                Description = "30 minutes cardio + strength training",
+                DueDate = DateTime.Today,
+                Priority = TaskPriority.Medium,
+                Category = TaskCategory.Health
+            });
+
+            Tasks.Add(new TodoItem
+            {
+                Title = "Call Mom",
+                Description = "Weekly check-in call",
+                DueDate = DateTime.Today.AddDays(1),
+                Priority = TaskPriority.Low,
+                Category = TaskCategory.Personal,
+                IsCompleted = true
+            });
+
+            Tasks.Add(new TodoItem
+            {
+                Title = "Update Resume",
+                Description = "Add recent project experience and skills",
+                DueDate = DateTime.Today.AddDays(7),
+                Priority = TaskPriority.Medium,
+                Category = TaskCategory.Work
+            });
+        }
+        
+    }
+
     [RelayCommand]
     private void AddTask()
     {
@@ -176,6 +196,8 @@ public partial class MainWindowViewModel : ViewModelBase
             SelectedTask.DueDate = NewTaskDueDate;
             SelectedTask.Priority = (TaskPriority)NewTaskPriority;
             SelectedTask.Category = (TaskCategory)NewTaskCategory;
+            
+            _jsonDataService.UpdateAsync(SelectedTask);
         }
         else
         {
@@ -189,6 +211,10 @@ public partial class MainWindowViewModel : ViewModelBase
             };
 
             Tasks.Add(newTask);
+            _jsonDataService.CreateAsync(newTask);
+            
+            UpdateStats();
+            UpdateFilteredTasks();
         }
         
 
@@ -204,6 +230,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private void DeleteTask(TodoItem task)
     {
         Tasks.Remove(task);
+        _jsonDataService.DeleteAsync(task.Id);
     }
 
     [RelayCommand]
@@ -215,6 +242,7 @@ public partial class MainWindowViewModel : ViewModelBase
     partial void OnFilterIndexChanged(int value)
     {
         UpdateFilteredTasks();
+        UpdateStats();
     }
 
     private void UpdateFilteredTasks()
@@ -241,5 +269,25 @@ public partial class MainWindowViewModel : ViewModelBase
         CompletedTasksCount = Tasks.Count(t => t.IsCompleted);
         PendingTasksCount = TotalTasksCount - CompletedTasksCount;
         ProgressPercentage = TotalTasksCount > 0 ? (double)CompletedTasksCount / TotalTasksCount * 100 : 0;
+    }
+
+    private async Task LoadTasksAsync()
+    {
+        try
+        {
+            var items = await _jsonDataService.GetAllAsync();
+            
+            foreach (var item in items)
+            {
+                Tasks.Add(item);
+            }
+            
+            UpdateFilteredTasks();
+            UpdateStats();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error loading tasks: {ex.Message}");
+        }
     }
 }
