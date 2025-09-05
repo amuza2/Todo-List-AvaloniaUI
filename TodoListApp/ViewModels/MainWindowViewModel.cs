@@ -31,6 +31,8 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty] private DateTime _newTaskDueDate;
 
+    public Array TaskPriorityList { get; } = Enum.GetValues<TaskPriority>();
+
     [ObservableProperty]
     private TaskPriority _newTaskPriority = TaskPriority.Medium;
 

@@ -353,12 +353,9 @@
                                 Classes="modern-combo"
                                 Grid.Column="0"
                                 Grid.Row="1"
+                                ItemsSource="{Binding TaskPriorityList}"
                                 Margin="0,0,8,0"
-                                SelectedIndex="{Binding NewTaskPriority}">
-                                <ComboBoxItem Content="High" />
-                                <ComboBoxItem Content="Medium" />
-                                <ComboBoxItem Content="Low" />
-                            </ComboBox>
+                                SelectedIndex="{Binding NewTaskPriority}" />
 
                             <TextBlock
                                 FontWeight="SemiBold"
