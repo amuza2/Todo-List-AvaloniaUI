@@ -1,8 +1,11 @@
-# StudyBuddy - Student Todo App
+# StudyBuddy Student Todo App
 
-A colorful, engaging, and student-friendly todo list application built with Avalonia UI using the MVVM pattern and CommunityToolkit.Mvvm.
+![Avalonia](https://img.shields.io/badge/Avalonia-UI-blue)  ![MVVM](https://img.shields.io/badge/MVVM-Community_Toolkit-green)  ![MVVM](https://img.shields.io/badge/MVVM-Community_Toolkit-green)  ![Cross-Platform](https://img.shields.io/badge/Cross--Platform-orange)
 
-## Screenshots 📸
+
+A colorful, engaging, and student-friendly todo list application.
+
+## Screenshots
 
 <img width="1032" height="864" alt="image" src="https://github.com/user-attachments/assets/16bec8ba-b516-4fa5-b594-b749b575ac6c" />
 
@@ -27,24 +30,6 @@ A colorful, engaging, and student-friendly todo list application built with Aval
 - **Modern UI Components**: Custom-styled buttons, inputs, and cards
 - **Real-time Updates**: Live statistics and progress tracking
 - **Cross-Platform**: Runs on Windows, macOS, and Linux
-
-## Project Structure
-
-```
-StudentTodoApp/
-├── Models/
-│   └── TodoItem.cs              # Task model with observable properties
-├── ViewModels/
-│   └── MainWindowViewModel.cs   # Main view model with commands and data
-├── Views/
-│   ├── MainWindow.axaml         # Main window UI definition
-│   └── MainWindow.axaml.cs      # Code-behind for main window
-├── Converters/
-│   └── Converters.cs            # Value converters for UI bindings
-├── App.axaml                    # Application resources and styles
-├── App.axaml.cs                 # Application entry point
-└── Program.cs                   # Main program entry point
-```
 
 ## Getting Started
 
@@ -93,22 +78,6 @@ StudentTodoApp/
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Roadmap
-
-### Planned Features
-- [ ] Task notifications and reminders
-- [ ] Data persistence (JSON/SQLite)
-- [ ] Task templates for common student activities
-- [ ] Time tracking and Pomodoro timer integration
-- [ ] Export tasks to calendar applications
-- [ ] Switch between Dark and Light Mode
-- [ ] Keyboard shortcuts
-- [ ] Task search functionality
-- [ ] Drag and drop task reordering
-- [ ] Study session planning
-
-
 
 ## Support
 
