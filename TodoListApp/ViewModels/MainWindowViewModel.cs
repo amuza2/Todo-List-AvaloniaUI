@@ -121,67 +121,6 @@ public partial class MainWindowViewModel : ViewModelBase
         
     }
 
-    private async Task AddSampleTasks()
-    {
-        List<TodoItem> items = await _jsonDataService.GetAllAsync();
-        if (items.Count > 0)
-        {
-            foreach (var item in items)
-            {
-                Tasks.Add(item);
-            }
-        }
-        else
-        {
-            Tasks.Add(new TodoItem
-            {
-                Title = "Complete Math Assignment",
-                Description = "Finish algebra homework problems 1-20",
-                DueDate = DateTime.Today.AddDays(2),
-                Priority = TaskPriority.High,
-                Category = TaskCategory.Academic
-            });
-
-            Tasks.Add(new TodoItem
-            {
-                Title = "Study for History Exam",
-                Description = "Review chapters 5-8, focus on key dates and events",
-                DueDate = DateTime.Today.AddDays(5),
-                Priority = TaskPriority.High,
-                Category = TaskCategory.Academic
-            });
-
-            Tasks.Add(new TodoItem
-            {
-                Title = "Morning Workout",
-                Description = "30 minutes cardio + strength training",
-                DueDate = DateTime.Today,
-                Priority = TaskPriority.Medium,
-                Category = TaskCategory.Health
-            });
-
-            Tasks.Add(new TodoItem
-            {
-                Title = "Call Mom",
-                Description = "Weekly check-in call",
-                DueDate = DateTime.Today.AddDays(1),
-                Priority = TaskPriority.Low,
-                Category = TaskCategory.Personal,
-                IsCompleted = true
-            });
-
-            Tasks.Add(new TodoItem
-            {
-                Title = "Update Resume",
-                Description = "Add recent project experience and skills",
-                DueDate = DateTime.Today.AddDays(7),
-                Priority = TaskPriority.Medium,
-                Category = TaskCategory.Work
-            });
-        }
-        
-    }
-
     [RelayCommand]
     private void AddTask()
     {
@@ -198,6 +137,7 @@ public partial class MainWindowViewModel : ViewModelBase
             SelectedTask.Category = (TaskCategory)NewTaskCategory;
             
             _jsonDataService.UpdateAsync(SelectedTask);
+            SelectedTask = null;
         }
         else
         {
