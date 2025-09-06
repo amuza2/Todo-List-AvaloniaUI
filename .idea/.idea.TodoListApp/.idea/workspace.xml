@@ -8,12 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf09e665-d44e-47bf-9260-bc39d947a2e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TodoListApp/Converters/DateToColorConverter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/Models/TodoItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Models/TodoItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +36,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6e7ee1cc1eda4856b69fee3902587d1ad19e00/0a/b88f49e4/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -103,12 +99,13 @@
       <updated>1756981233250</updated>
       <workItem from="1756981234874" duration="4775000" />
       <workItem from="1756997109259" duration="28458000" />
-      <workItem from="1757119426424" duration="17055000" />
+      <workItem from="1757119426424" duration="17678000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
 </project>
