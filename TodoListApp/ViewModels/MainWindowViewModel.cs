@@ -15,7 +15,7 @@ namespace TodoListApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private readonly IJsonDataService _jsonDataService;
+    private readonly IJsonDataService? _jsonDataService;
     
     [ObservableProperty]
     private ObservableCollection<TodoItem> _tasks = new();
@@ -36,6 +36,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private TaskPriority _newTaskPriority = TaskPriority.Medium;
 
+    public Array TaskCategoriesList { get; } = Enum.GetValues<TaskCategory>();
     [ObservableProperty] private TaskCategory _newTaskCategory = TaskCategory.Academic;
 
     [ObservableProperty]
@@ -67,8 +68,11 @@ public partial class MainWindowViewModel : ViewModelBase
         ButtonText = "Add";
         
         // Add some sample tasks for demonstration
-        // AddSampleTasks();
-        _ = LoadTasksAsync();
+        AddSampleTasks();
+        if (_jsonDataService != null)
+        {
+            _ = LoadTasksAsync();
+        }
     }
 
     public MainWindowViewModel() : this(null!){ }
@@ -148,7 +152,10 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (sender is TodoItem task && e.PropertyName == nameof(TodoItem.IsCompleted))
         {
-            _jsonDataService.UpdateAsync(task);
+            if (_jsonDataService != null)
+            {
+                _ = _jsonDataService.UpdateAsync(task);
+            }
             UpdateStats();
             UpdateFilteredTasks();
         }
@@ -183,7 +190,7 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private void AddTask()
+    private async Task AddTask()
     {
         if (string.IsNullOrWhiteSpace(NewTaskTitle))
             return;
@@ -197,7 +204,10 @@ public partial class MainWindowViewModel : ViewModelBase
             SelectedTask.Priority = NewTaskPriority;
             SelectedTask.Category = NewTaskCategory;
             
-            _jsonDataService.UpdateAsync(SelectedTask);
+            if (_jsonDataService != null)
+            {
+                await _jsonDataService.UpdateAsync(SelectedTask);
+            }
             SelectedTask = null;
         }
         else
@@ -212,7 +222,10 @@ public partial class MainWindowViewModel : ViewModelBase
             };
 
             Tasks.Add(newTask);
-            _jsonDataService.CreateAsync(newTask);
+            if (_jsonDataService != null)
+            {
+                await _jsonDataService.CreateAsync(newTask);
+            }
             
             UpdateStats();
             UpdateFilteredTasks();
@@ -237,10 +250,14 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private void DeleteTask(TodoItem task)
+    private async Task DeleteTask(TodoItem task)
     {
         Tasks.Remove(task);
-        _jsonDataService.DeleteAsync(task.Id);
+        if (_jsonDataService != null)
+        {
+            await _jsonDataService.DeleteAsync(task.Id);
+        }
+        
         ClearForm();
     }
 
@@ -287,7 +304,11 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         try
         {
+            if (_jsonDataService == null) return;
+            
             var items = await _jsonDataService.GetAllAsync();
+            
+            Tasks.Clear();
             
             foreach (var item in items)
             {

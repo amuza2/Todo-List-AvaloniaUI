@@ -37,7 +37,7 @@ public class JsonDataService : IJsonDataService
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             Converters =
             {
-                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) 
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
             }
         };
     }
@@ -124,6 +124,7 @@ public class JsonDataService : IJsonDataService
         {
             _logger.LogInformation("Save task item...");
             var json = JsonSerializer.Serialize(items, _jsonSerializerOptions);
+            // var json = JsonSerializer.Serialize(items, TodoJsonContext.Default.ListTodoItem);
             
             var tempFile = _filePath + ".tmp";
             

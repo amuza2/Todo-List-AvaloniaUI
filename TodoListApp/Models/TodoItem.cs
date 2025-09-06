@@ -7,43 +7,52 @@ namespace TodoListApp.Models;
 
 public partial class TodoItem : ViewModelBase
 {
-    [ObservableProperty] [JsonPropertyName("id")] 
+    [ObservableProperty]
+    [JsonPropertyName("id")]
     private int _id;
     
-    [ObservableProperty] [JsonPropertyName("title")]
+    [ObservableProperty]
+    [JsonPropertyName("title")]
     private string _title = string.Empty;
 
-    [ObservableProperty] [JsonPropertyName("description")]
+    [ObservableProperty]
+    [JsonPropertyName("description")]
     private string _description = string.Empty;
 
-    [ObservableProperty] [JsonPropertyName("isCompleted")]
+    [ObservableProperty]
+    [JsonPropertyName("isCompleted")]
     private bool _isCompleted;
 
-    [ObservableProperty] [JsonPropertyName("dueDate")]
+    [ObservableProperty]
+    [JsonPropertyName("dueDate")]
     private DateTime _dueDate = DateTime.Today;
 
-    [ObservableProperty] [JsonPropertyName("priority")]
+    [ObservableProperty]
+    [JsonPropertyName("priority")]
     private TaskPriority _priority = TaskPriority.Medium;
 
-    [ObservableProperty] [JsonPropertyName("category")]
+    [ObservableProperty]
+    [JsonPropertyName("category")]
     private TaskCategory _category = TaskCategory.Academic;
 
-    [ObservableProperty] [JsonPropertyName("createdDate")]
+    [ObservableProperty]
+    [JsonPropertyName("createdDate")]
     private DateTime _createdDate = DateTime.Now;
-
-    [ObservableProperty] private bool _isSelected;
     
+    
+    [ObservableProperty] [property: JsonIgnore] private bool _isSelected;
+    
+    [JsonIgnore]
     public bool IsOverdue => !IsCompleted && DueDate < DateTime.Today;
-
+    [JsonIgnore]
     public bool IsDueToday => DueDate.Date == DateTime.Today;
-
+    [JsonIgnore]
     public bool IsDueSoon => !IsCompleted && DueDate <= DateTime.Today.AddDays(3) && DueDate >= DateTime.Today;
 
     partial void OnIsCompletedChanged(bool value)
     {
         OnPropertyChanged(nameof(IsOverdue));
         OnPropertyChanged(nameof(IsDueSoon));
-        Console.WriteLine("Checked");
     }
 
     partial void OnDueDateChanged(DateTime value)

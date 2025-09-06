@@ -18,6 +18,7 @@ public class PriorityToColorConverter : IValueConverter
                 TaskPriority.High => Brushes.IndianRed,
                 TaskPriority.Medium => Brushes.DarkOrange,
                 TaskPriority.Low => Brushes.GreenYellow,
+                TaskPriority.Critical => Brushes.DarkRed,
                 _ => Brushes.Black
             };
         }

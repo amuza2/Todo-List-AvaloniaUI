@@ -11,7 +11,6 @@
         <converters:BoolToTextDecorationConverter x:Key="BoolToTextDecorationConverter" />
         <converters:BoolToForegroundConverter x:Key="BoolToForegroundConverter" />
         <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
-        <converters:PriorityToClassConverter x:Key="PriorityToClassConverter" />
         <converters:CategoryToClassConverter x:Key="CategoryToClassConverter" />
         <converters:ProgressToWidthConverter x:Key="ProgressToWidthConverter" />
         <converters:DateTimeToNullableConverter x:Key="DateTimeToNullableConverter" />
@@ -19,10 +18,9 @@
         <converters:DateToColorConverter x:Key="DateToColorConverter" />
     </Application.Resources>
 
-    <!-- <Application.DataTemplates> -->
-    <!--    -->
-    <!--     <local:ViewLocator /> -->
-    <!-- </Application.DataTemplates> -->
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
 
 
     <Application.Styles>
