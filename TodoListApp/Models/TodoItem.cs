@@ -30,6 +30,8 @@ public partial class TodoItem : ViewModelBase
 
     [ObservableProperty] [JsonPropertyName("createdDate")]
     private DateTime _createdDate = DateTime.Now;
+
+    [ObservableProperty] private bool _isSelected;
     
     public bool IsOverdue => !IsCompleted && DueDate < DateTime.Today;
 
@@ -41,6 +43,7 @@ public partial class TodoItem : ViewModelBase
     {
         OnPropertyChanged(nameof(IsOverdue));
         OnPropertyChanged(nameof(IsDueSoon));
+        Console.WriteLine("Checked");
     }
 
     partial void OnDueDateChanged(DateTime value)

@@ -16,6 +16,7 @@
         <converters:ProgressToWidthConverter x:Key="ProgressToWidthConverter" />
         <converters:DateTimeToNullableConverter x:Key="DateTimeToNullableConverter" />
         <converters:PriorityToColorConverter x:Key="PriorityToColorConverter" />
+        <converters:DateToColorConverter x:Key="DateToColorConverter" />
     </Application.Resources>
 
     <!-- <Application.DataTemplates> -->

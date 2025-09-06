@@ -1,8 +1,8 @@
 <Window
-    Height="650"
+    Height="700"
     Icon="/Assets/avalonia-logo.ico"
     MinHeight="550"
-    MinWidth="600"
+    MinWidth="800"
     Title="StudyBuddy - Your Todo Companion"
     Width="900"
     d:DesignHeight="700"
@@ -187,6 +187,90 @@
             <Setter Property="Padding" Value="8,4" />
             <Setter Property="FontSize" Value="12" />
         </Style>
+
+        <!--  Calendar  -->
+        <Style Selector="CalendarDatePicker.custom">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <!--  TextBox part  -->
+                            <TextBox
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                Grid.Column="0"
+                                HorizontalAlignment="Stretch"
+                                Name="PART_TextBox"
+                                Padding="{TemplateBinding Padding}"
+                                Text="{TemplateBinding Text}"
+                                VerticalAlignment="Center"
+                                Watermark="{TemplateBinding Watermark}" />
+
+                            <!--  Custom Button with Icon  -->
+                            <Button
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Grid.Column="1"
+                                Height="32"
+                                Name="PART_Button"
+                                Padding="8"
+                                VerticalAlignment="Center"
+                                Width="32">
+                                <!--  Calendar Icon using Path  -->
+                                <Path
+                                    Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"
+                                    Fill="{DynamicResource SystemAccentColor}"
+                                    Height="20"
+                                    Stretch="Uniform"
+                                    Width="20" />
+                            </Button>
+
+                            <!--  Popup for Calendar  -->
+                            <Popup
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                IsLightDismissEnabled="True"
+                                Name="PART_Popup"
+                                Placement="BottomEdgeAlignedLeft"
+                                PlacementTarget="{Binding $parent[CalendarDatePicker]}">
+                                <Border
+                                    Background="{DynamicResource SystemChromeMediumColor}"
+                                    BorderBrush="{DynamicResource SystemChromeHighColor}"
+                                    BorderThickness="1"
+                                    CornerRadius="0"
+                                    Padding="4">
+                                    <Calendar Name="PART_Calendar" />
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Setter Property="SelectedDateFormat" Value="Custom" />
+            <Setter Property="CustomDateFormatString" Value="ddd, MMMM dd, yyyy" />
+        </Style>
+
+        <!--  Listbox  -->
+        <Style Selector="ListBox.compact ListBoxItem">
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        VerticalContentAlignment="Stretch" />
+                </ControlTemplate>
+            </Setter>
+        </Style>
     </Window.Styles>
 
     <Grid>
@@ -199,7 +283,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="500" />
+            <RowDefinition Height="550" />
         </Grid.RowDefinitions>
 
         <!--  Header  -->
@@ -380,6 +464,7 @@
                             <TextBlock FontWeight="SemiBold" Text="Due Date" />
                             <CalendarDatePicker
                                 Background="#2D2D2D"
+                                Classes="custom"
                                 CornerRadius="12"
                                 Foreground="#E0E0E0"
                                 HorizontalAlignment="Stretch"
@@ -483,36 +568,32 @@
                     <!--  Task List  -->
                     <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <ListBox ItemsSource="{Binding FilteredTasks}" SelectedItem="{Binding SelectedTask}">
-                                <ItemsControl.ItemTemplate>
+                            <ListBox
+                                Classes="compact"
+                                ItemsSource="{Binding FilteredTasks}"
+                                SelectedItem="{Binding SelectedTask}">
+                                <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Border Classes="task-card">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
-
+                                            <Grid
+                                                ColumnDefinitions="Auto,*,Auto"
+                                                RowDefinitions="Auto,Auto, Auto"
+                                                RowSpacing="3">
                                                 <CheckBox
                                                     Classes="modern-check"
                                                     Grid.Column="0"
                                                     Grid.Row="0"
-                                                    Grid.RowSpan="2"
+                                                    Grid.RowSpan="3"
                                                     IsChecked="{Binding IsCompleted}"
-                                                    Margin="0,4,16,0"
-                                                    VerticalAlignment="Top" />
+                                                    Margin="0,4,10,0"
+                                                    VerticalAlignment="Center" />
 
                                                 <TextBlock
                                                     FontSize="16"
                                                     FontWeight="SemiBold"
                                                     Foreground="{Binding IsCompleted, Converter={StaticResource BoolToForegroundConverter}}"
                                                     Grid.Column="1"
+                                                    Grid.ColumnSpan="2"
                                                     Grid.Row="0"
                                                     Text="{Binding Title}"
                                                     TextDecorations="{Binding IsCompleted, Converter={StaticResource BoolToTextDecorationConverter}}" />
@@ -521,6 +602,7 @@
                                                     FontSize="14"
                                                     Foreground="#A0A0A0"
                                                     Grid.Column="1"
+                                                    Grid.ColumnSpan="2"
                                                     Grid.Row="1"
                                                     IsVisible="{Binding Description, Converter={StaticResource StringNotEmptyConverter}}"
                                                     Margin="0,4,0,0"
@@ -539,25 +621,26 @@
                                                         Padding="8,4"
                                                         Text="{Binding Category}" />
                                                     <TextBlock
-                                                        Background="#3E3E3E"
                                                         FontSize="12"
-                                                        Foreground="#E0E0E0"
+                                                        Foreground="{Binding DueDate, Converter={StaticResource DateToColorConverter}}"
                                                         Padding="8,4"
                                                         Text="{Binding DueDate, StringFormat='{}{0:MMM dd}'}" />
                                                 </StackPanel>
 
                                                 <Button
                                                     Classes="delete-btn"
-                                                    Command="{Binding $parent[ItemsControl].((vm:MainWindowViewModel)DataContext).DeleteTaskCommand}"
+                                                    Command="{Binding $parent[ListBox].((vm:MainWindowViewModel)DataContext).DeleteTaskCommand}"
                                                     CommandParameter="{Binding}"
                                                     Content="Delete"
                                                     Grid.Column="2"
-                                                    Grid.Row="0"
+                                                    Grid.Row="2"
+                                                    IsVisible="{Binding IsSelected}"
+                                                    Margin="0,8,0,0"
                                                     VerticalAlignment="Top" />
                                             </Grid>
                                         </Border>
                                     </DataTemplate>
-                                </ItemsControl.ItemTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
                         </StackPanel>
                     </ScrollViewer>

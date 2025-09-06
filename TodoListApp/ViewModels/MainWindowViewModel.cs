@@ -55,6 +55,7 @@ public partial class MainWindowViewModel : ViewModelBase
     
     [ObservableProperty]
     private TodoItem? _selectedTask;
+    private TodoItem? _previousSelectedTask;
     
     [ObservableProperty] private string _buttonText;
 
@@ -66,12 +67,61 @@ public partial class MainWindowViewModel : ViewModelBase
         ButtonText = "Add";
         
         // Add some sample tasks for demonstration
-        // _ = AddSampleTasks();
+        // AddSampleTasks();
         _ = LoadTasksAsync();
     }
 
     public MainWindowViewModel() : this(null!){ }
+    
+    private void AddSampleTasks()
+    {
+        Tasks.Add(new TodoItem
+        {
+            Title = "Complete Math Assignment",
+            Description = "Finish algebra homework problems 1-20",
+            DueDate = DateTime.Today.AddDays(2),
+            Priority = TaskPriority.High,
+            Category = TaskCategory.Academic
+        });
 
+        Tasks.Add(new TodoItem
+        {
+            Title = "Study for History Exam",
+            Description = "Review chapters 5-8, focus on key dates and events",
+            DueDate = DateTime.Today.AddDays(5),
+            Priority = TaskPriority.High,
+            Category = TaskCategory.Academic
+        });
+
+        Tasks.Add(new TodoItem
+        {
+            Title = "Morning Workout",
+            Description = "30 minutes cardio + strength training",
+            DueDate = DateTime.Today,
+            Priority = TaskPriority.Medium,
+            Category = TaskCategory.Health
+        });
+
+        Tasks.Add(new TodoItem
+        {
+            Title = "Call Mom",
+            Description = "Weekly check-in call",
+            DueDate = DateTime.Today.AddDays(1),
+            Priority = TaskPriority.Low,
+            Category = TaskCategory.Personal,
+            IsCompleted = true
+        });
+
+        Tasks.Add(new TodoItem
+        {
+            Title = "Update Resume",
+            Description = "Add recent project experience and skills",
+            DueDate = DateTime.Today.AddDays(7),
+            Priority = TaskPriority.Medium,
+            Category = TaskCategory.Work
+        });
+    }
+    
     private void OnTasksCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         if (e.OldItems != null)
@@ -96,17 +146,28 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private void OnTaskPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(TodoItem.IsCompleted))
+        if (sender is TodoItem task && e.PropertyName == nameof(TodoItem.IsCompleted))
         {
+            _jsonDataService.UpdateAsync(task);
             UpdateStats();
             UpdateFilteredTasks();
         }
     }
 
+    partial void OnSelectedTaskChanging(TodoItem? value)
+    {
+        _previousSelectedTask = _selectedTask;
+    }
+
     partial void OnSelectedTaskChanged(TodoItem? value)
     {
+        if(_previousSelectedTask != null)
+            _previousSelectedTask.IsSelected = false;
+        
         if (value is not null)
         {
+            value.IsSelected = true;
+            
             NewTaskTitle = value.Title;
             NewTaskDescription = value.Description;
             NewTaskPriority = value.Priority;
@@ -157,7 +218,11 @@ public partial class MainWindowViewModel : ViewModelBase
             UpdateFilteredTasks();
         }
 
-        // Clear form
+        ClearForm();
+    }
+
+    private void ClearForm()
+    {
         NewTaskTitle = string.Empty;
         NewTaskDescription = string.Empty;
         NewTaskDueDate = DateTime.Today.AddDays(1);
@@ -176,12 +241,14 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         Tasks.Remove(task);
         _jsonDataService.DeleteAsync(task.Id);
+        ClearForm();
     }
 
     [RelayCommand]
     private void ClearAllTasks()
     {
         Tasks.Clear();
+        ClearForm();
     }
 
     partial void OnFilterIndexChanged(int value)
