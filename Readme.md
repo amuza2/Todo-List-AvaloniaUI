@@ -7,7 +7,8 @@ A colorful, engaging, and student-friendly todo list application.
 
 ## Screenshots
 
-<img width="1032" height="864" alt="image" src="https://github.com/user-attachments/assets/16bec8ba-b516-4fa5-b594-b749b575ac6c" />
+<img width="1032" height="859" alt="image" src="https://github.com/user-attachments/assets/f7b4ef0a-b9a2-4858-95e8-a0d31449d3db" />
+
 
 ## Features
 
