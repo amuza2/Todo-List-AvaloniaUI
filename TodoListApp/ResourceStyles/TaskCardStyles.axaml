@@ -1,0 +1,52 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Add Styles Here  -->
+    <!--  Task Card Base Style  -->
+    <Style Selector="Border.task-card">
+        <Setter Property="Background" Value="{StaticResource BackgroundCardBrush}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="Margin" Value="0,8" />
+        <Setter Property="BoxShadow" Value="{StaticResource CardShadow}" />
+    </Style>
+
+    <!--  Task Card Hover Style  -->
+    <Style Selector="Border.task-card:pointerover">
+        <Setter Property="BoxShadow" Value="{StaticResource CardHoverShadow}" />
+        <Setter Property="Background" Value="{StaticResource BackgroundHoverBrush}" />
+    </Style>
+
+    <!--  Card Container Style  -->
+    <Style Selector="Border.card-container">
+        <Setter Property="Background" Value="{StaticResource BackgroundCardBrush}" />
+        <Setter Property="BoxShadow" Value="{StaticResource PrimaryShadow}" />
+        <Setter Property="CornerRadius" Value="16" />
+        <Setter Property="Padding" Value="20" />
+    </Style>
+
+    <!--  Header Card Style  -->
+    <Style Selector="Border.header-card">
+        <Setter Property="Background" Value="{StaticResource BackgroundInputBrush}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="16" />
+    </Style>
+
+    <!--  Progress Container Style  -->
+    <Style Selector="Border.progress-container">
+        <Setter Property="Background" Value="{StaticResource ProgressBackgroundBrush}" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Height" Value="8" />
+    </Style>
+
+    <!--  Progress Bar Style  -->
+    <Style Selector="Border.progress-bar">
+        <Setter Property="Background" Value="{StaticResource ProgressBarBrush}" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+</Styles>

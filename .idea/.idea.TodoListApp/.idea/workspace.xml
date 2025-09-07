@@ -8,9 +8,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf09e665-d44e-47bf-9260-bc39d947a2e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TodoListApp/Converters/Converters.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/Brushes.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/ButtonStyles.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/CalendarStyles.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/Colors.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/ComboBoxStyles.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/ListBoxStyles.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/PriorityAndCategoryStyles.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/TaskCardStyles.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/TextBoxStyles.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TodoListApp/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/Converters/CategoryToClassConverter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/Converters/DateTimeToNullableConverter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/TodoListApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/TodoListApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,24 +72,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.TodoListApp.executor&quot;: &quot;Debug&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mohammed/Downloads/Icons/icons8-tasklist.png&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.TodoListApp.executor": "Debug",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "refactor/organize-styles",
+    "last_opened_file_path": "/home/mohammed/Downloads/Icons/icons8-tasklist.png",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="TodoListApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -111,7 +125,7 @@
       <workItem from="1756981234874" duration="4775000" />
       <workItem from="1756997109259" duration="28458000" />
       <workItem from="1757119426424" duration="30711000" />
-      <workItem from="1757243813333" duration="415000" />
+      <workItem from="1757243813333" duration="6003000" />
     </task>
     <servers />
   </component>

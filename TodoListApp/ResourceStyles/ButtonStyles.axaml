@@ -1,0 +1,81 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Add Styles Here  -->
+    <!--  Primary Button Style  -->
+    <Style Selector="Button.modern-btn">
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="16,8" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+    <!--  Primary Button Hover  -->
+    <Style Selector="Button.modern-btn:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource PrimaryHoverBrush}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <!--  Primary Button Pressed  -->
+    <Style Selector="Button.modern-btn:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource PrimaryPressedBrush}" />
+    </Style>
+
+    <!--  Delete Button Style  -->
+    <Style Selector="Button.delete-btn">
+        <Setter Property="Background" Value="{StaticResource ErrorBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+    <!--  Delete Button Hover  -->
+    <Style Selector="Button.delete-btn:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource ErrorHoverBrush}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <!--  Cancel Button Style  -->
+    <Style Selector="Button.cancel-btn">
+        <Setter Property="Background" Value="{StaticResource GrayBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="16,8" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+    <!--  Cancel Button Hover  -->
+    <Style Selector="Button.cancel-btn:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource DimGrayBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="16,8" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+    <!--  Icon Button Style  -->
+    <Style Selector="Button.icon-btn">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+    </Style>
+
+</Styles>

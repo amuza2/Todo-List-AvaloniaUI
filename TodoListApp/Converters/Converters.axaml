@@ -1,0 +1,13 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converters="using:TodoListApp.Converters"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  Add Resources Here  -->
+
+    <converters:BoolToForegroundConverter x:Key="BoolToForegroundConverter" />
+    <converters:BoolToTextDecorationConverter x:Key="BoolToTextDecorationConverter" />
+    <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
+    <converters:PriorityToColorConverter x:Key="PriorityToColorConverter" />
+    <converters:DateToColorConverter x:Key="DateToColorConverter" />
+    <converters:ProgressToWidthConverter x:Key="ProgressToWidthConverter" />
+</ResourceDictionary>

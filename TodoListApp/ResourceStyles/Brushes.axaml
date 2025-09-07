@@ -1,0 +1,45 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Solid Color Brushes  -->
+    <SolidColorBrush Color="{StaticResource PrimaryColor}" x:Key="PrimaryBrush" />
+    <SolidColorBrush Color="{StaticResource PrimaryHoverColor}" x:Key="PrimaryHoverBrush" />
+    <SolidColorBrush Color="{StaticResource PrimaryPressedColor}" x:Key="PrimaryPressedBrush" />
+    <SolidColorBrush Color="{StaticResource PrimaryLightColor}" x:Key="PrimaryLightBrush" />
+
+    <SolidColorBrush Color="{StaticResource BackgroundPrimaryColor}" x:Key="BackgroundPrimaryBrush" />
+    <SolidColorBrush Color="{StaticResource BackgroundSecondaryColor}" x:Key="BackgroundSecondaryBrush" />
+    <SolidColorBrush Color="{StaticResource BackgroundCardColor}" x:Key="BackgroundCardBrush" />
+    <SolidColorBrush Color="{StaticResource BackgroundInputColor}" x:Key="BackgroundInputBrush" />
+    <SolidColorBrush Color="{StaticResource BackgroundHoverColor}" x:Key="BackgroundHoverBrush" />
+
+    <SolidColorBrush Color="{StaticResource TextPrimaryColor}" x:Key="TextPrimaryBrush" />
+    <SolidColorBrush Color="{StaticResource TextSecondaryColor}" x:Key="TextSecondaryBrush" />
+    <SolidColorBrush Color="{StaticResource TextWhiteColor}" x:Key="TextWhiteBrush" />
+
+    <SolidColorBrush Color="{StaticResource BorderPrimaryColor}" x:Key="BorderPrimaryBrush" />
+    <SolidColorBrush Color="{StaticResource BorderFocusColor}" x:Key="BorderFocusBrush" />
+
+    <SolidColorBrush Color="{StaticResource ErrorColor}" x:Key="ErrorBrush" />
+    <SolidColorBrush Color="{StaticResource ErrorHoverColor}" x:Key="ErrorHoverBrush" />
+    <SolidColorBrush Color="{StaticResource SuccessColor}" x:Key="SuccessBrush" />
+    <SolidColorBrush Color="{StaticResource WarningColor}" x:Key="WarningBrush" />
+    <SolidColorBrush Color="{StaticResource InfoColor}" x:Key="InfoBrush" />
+
+    <SolidColorBrush Color="{StaticResource GrayColor}" x:Key="GrayBrush" />
+    <SolidColorBrush Color="{StaticResource DimGrayColor}" x:Key="DimGrayBrush" />
+    <SolidColorBrush Color="{StaticResource ProgressBarColor}" x:Key="ProgressBarBrush" />
+    <SolidColorBrush Color="{StaticResource ProgressBackgroundColor}" x:Key="ProgressBackgroundBrush" />
+
+    <!--  Gradient Brushes  -->
+    <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%" x:Key="BackgroundGradientBrush">
+        <GradientStop Color="{StaticResource BackgroundPrimaryColor}" Offset="0" />
+        <GradientStop Color="{StaticResource BackgroundSecondaryColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!--  Box Shadows  -->
+    <BoxShadows x:Key="PrimaryShadow">0 0 4 0 #6366F1</BoxShadows>
+    <BoxShadows x:Key="CardShadow">0 2 8 0 #00000060</BoxShadows>
+    <BoxShadows x:Key="CardHoverShadow">0 4 16 0 #00000080</BoxShadows>
+    <BoxShadows x:Key="HeaderShadow">0 4 4 0 #6366F1</BoxShadows>
+
+</ResourceDictionary>
