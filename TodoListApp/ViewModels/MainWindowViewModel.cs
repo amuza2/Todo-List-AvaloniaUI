@@ -247,6 +247,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private void CancelTask()
     {
         SelectedTask = null;
+        ClearForm();
     }
 
     [RelayCommand]
