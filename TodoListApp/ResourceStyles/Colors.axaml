@@ -1,0 +1,56 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Primary Colors  -->
+    <Color x:Key="PrimaryColor">#6366F1</Color>
+    <Color x:Key="PrimaryHoverColor">#5B5CF6</Color>
+    <Color x:Key="PrimaryPressedColor">#4F46E5</Color>
+    <Color x:Key="PrimaryLightColor">#C7D2FE</Color>
+
+    <!--  Background Colors  -->
+    <Color x:Key="BackgroundPrimaryColor">#121212</Color>
+    <Color x:Key="BackgroundSecondaryColor">#1A1A1A</Color>
+    <Color x:Key="BackgroundCardColor">#252525</Color>
+    <Color x:Key="BackgroundInputColor">#2D2D2D</Color>
+    <Color x:Key="BackgroundHoverColor">#2D2D2D</Color>
+
+    <!--  Text Colors  -->
+    <Color x:Key="TextPrimaryColor">#E0E0E0</Color>
+    <Color x:Key="TextSecondaryColor">#A0A0A0</Color>
+    <Color x:Key="TextWhiteColor">WhiteSmoke</Color>
+
+    <!--  Border Colors  -->
+    <Color x:Key="BorderPrimaryColor">#3E3E3E</Color>
+    <Color x:Key="BorderFocusColor">#6366F1</Color>
+
+    <!--  Status Colors  -->
+    <Color x:Key="ErrorColor">#EF4444</Color>
+    <Color x:Key="ErrorHoverColor">#DC2626</Color>
+    <Color x:Key="SuccessColor">ForestGreen</Color>
+    <Color x:Key="WarningColor">#FFD166</Color>
+    <Color x:Key="InfoColor">#6BB9FF</Color>
+
+    <!--  Priority Colors  -->
+    <Color x:Key="HighPriorityColor">#FF6B6B</Color>
+    <Color x:Key="HighPriorityBackgroundColor">#422B2B</Color>
+    <Color x:Key="MediumPriorityColor">#FFD166</Color>
+    <Color x:Key="MediumPriorityBackgroundColor">#423D2B</Color>
+    <Color x:Key="LowPriorityColor">#06D6A0</Color>
+    <Color x:Key="LowPriorityBackgroundColor">#2B4237</Color>
+
+    <!--  Category Colors  -->
+    <Color x:Key="AcademicColor">#6BB9FF</Color>
+    <Color x:Key="AcademicBackgroundColor">#2B3A42</Color>
+    <Color x:Key="PersonalColor">#C97BFF</Color>
+    <Color x:Key="PersonalBackgroundColor">#3D2B42</Color>
+    <Color x:Key="WorkColor">#FFD166</Color>
+    <Color x:Key="WorkBackgroundColor">#423D2B</Color>
+    <Color x:Key="HealthColor">#06D6A0</Color>
+    <Color x:Key="HealthBackgroundColor">#2B4237</Color>
+
+    <!--  Other Colors  -->
+    <Color x:Key="GrayColor">Gray</Color>
+    <Color x:Key="DimGrayColor">DimGray</Color>
+    <Color x:Key="ProgressBarColor">#06D6A0</Color>
+    <Color x:Key="ProgressBackgroundColor">#3E3E3E</Color>
+
+</ResourceDictionary>

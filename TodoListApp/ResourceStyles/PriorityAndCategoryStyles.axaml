@@ -1,0 +1,111 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Add Styles Here  -->
+
+    <!--  Priority Styles - Simple approach without templates  -->
+    <Style Selector="TextBlock.priority-high">
+        <Setter Property="Background" Value="{StaticResource HighPriorityBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource HighPriorityColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style Selector="TextBlock.priority-medium">
+        <Setter Property="Background" Value="{StaticResource MediumPriorityBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource MediumPriorityColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style Selector="TextBlock.priority-low">
+        <Setter Property="Background" Value="{StaticResource LowPriorityBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource LowPriorityColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <!--  Category Styles  -->
+    <Style Selector="TextBlock.category-academic">
+        <Setter Property="Background" Value="{StaticResource AcademicBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource AcademicColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style Selector="TextBlock.category-personal">
+        <Setter Property="Background" Value="{StaticResource PersonalBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource PersonalColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style Selector="TextBlock.category-work">
+        <Setter Property="Background" Value="{StaticResource WorkBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource WorkColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style Selector="TextBlock.category-health">
+        <Setter Property="Background" Value="{StaticResource HealthBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource HealthColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <!--  Base Tag Style  -->
+    <Style Selector="TextBlock.tag">
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!--  Category Styles  -->
+    <Style Selector="TextBlock.category-academic">
+        <Setter Property="Background" Value="{StaticResource AcademicBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource AcademicColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style Selector="TextBlock.category-personal">
+        <Setter Property="Background" Value="{StaticResource PersonalBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource PersonalColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style Selector="TextBlock.category-work">
+        <Setter Property="Background" Value="{StaticResource WorkBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource WorkColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style Selector="TextBlock.category-health">
+        <Setter Property="Background" Value="{StaticResource HealthBackgroundColor}" />
+        <Setter Property="Foreground" Value="{StaticResource HealthColor}" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <!--  Base Tag Style  -->
+    <Style Selector="TextBlock.tag">
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+</Styles>

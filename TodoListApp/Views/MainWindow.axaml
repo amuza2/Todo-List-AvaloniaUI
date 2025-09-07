@@ -20,265 +20,9 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Window.Styles>
-        <!--  Base colors  -->
-        <Style Selector="TextBlock">
-            <Setter Property="Foreground" Value="#E0E0E0" />
-        </Style>
-
-        <!--  Base button style  -->
-        <Style Selector="Button.modern-btn">
-            <Setter Property="Background" Value="#6366F1" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="16,8" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
-
-        <!--  Button hover effects  -->
-        <Style Selector="Button.modern-btn:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#5B5CF6" />
-            <Setter Property="Foreground" Value="White" />
-        </Style>
-
-        <!--  Button pressed effects  -->
-        <Style Selector="Button.modern-btn:pressed /template/ ContentPresenter">
-            <Setter Property="Background" Value="#4F46E5" />
-        </Style>
-
-        <!--  Delete button style  -->
-        <Style Selector="Button.delete-btn">
-            <Setter Property="Background" Value="#EF4444" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
-
-        <!--  Delete button hover  -->
-        <Style Selector="Button.delete-btn:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#DC2626" />
-            <Setter Property="Foreground" Value="White" />
-        </Style>
-
-        <!--  Cancel button  -->
-        <Style Selector="Button.cancel-btn">
-            <Setter Property="Background" Value="Gray" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="16,8" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
-
-        <Style Selector="Button.cancel-btn:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="DimGray" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="16,8" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
-
-        <!--  TextBox style  -->
-        <Style Selector="TextBox.modern-input">
-            <Setter Property="Background" Value="#2D2D2D" />
-            <Setter Property="Foreground" Value="#E0E0E0" />
-            <Setter Property="BorderBrush" Value="#3E3E3E" />
-            <Setter Property="BorderThickness" Value="2" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="16,12" />
-            <Setter Property="FontSize" Value="14" />
-        </Style>
-
-        <!--  TextBox focus style  -->
-        <Style Selector="TextBox.modern-input:focus /template/ ContentPresenter">
-            <Setter Property="BorderBrush" Value="#6366F1" />
-        </Style>
-
-        <!--  ComboBox style  -->
-        <Style Selector="ComboBox.modern-combo">
-            <Setter Property="Background" Value="#2D2D2D" />
-            <Setter Property="Foreground" Value="#E0E0E0" />
-            <Setter Property="BorderBrush" Value="#3E3E3E" />
-            <Setter Property="BorderThickness" Value="2" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="16,12" />
-            <Setter Property="FontSize" Value="14" />
-        </Style>
-
-        <!--  Task card style  -->
-        <Style Selector="Border.task-card">
-            <Setter Property="Background" Value="#252525" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="16" />
-            <Setter Property="Margin" Value="0,8" />
-            <Setter Property="BoxShadow" Value="0 2 8 0 #00000060" />
-        </Style>
-
-        <!--  Task card hover  -->
-        <Style Selector="Border.task-card:pointerover">
-            <Setter Property="BoxShadow" Value="0 4 16 0 #00000080" />
-            <Setter Property="Background" Value="#2D2D2D" />
-        </Style>
-
-        <!--  CheckBox style  -->
-        <Style Selector="CheckBox.modern-check">
-            <Setter Property="Margin" Value="0,0,12,0" />
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
-
-        <!--  Priority styles  -->
-        <Style Selector="TextBlock.priority-high">
-            <Setter Property="Background" Value="#422B2B" />
-            <Setter Property="Foreground" Value="#FF6B6B" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-        </Style>
-
-        <Style Selector="TextBlock.priority-medium">
-            <Setter Property="Background" Value="#423D2B" />
-            <Setter Property="Foreground" Value="#FFD166" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-        </Style>
-
-        <Style Selector="TextBlock.priority-low">
-            <Setter Property="Background" Value="#2B4237" />
-            <Setter Property="Foreground" Value="#06D6A0" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-        </Style>
-
-        <!--  Category styles  -->
-        <Style Selector="TextBlock.category-academic">
-            <Setter Property="Background" Value="#2B3A42" />
-            <Setter Property="Foreground" Value="#6BB9FF" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-        </Style>
-
-        <Style Selector="TextBlock.category-personal">
-            <Setter Property="Background" Value="#3D2B42" />
-            <Setter Property="Foreground" Value="#C97BFF" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-        </Style>
-
-        <Style Selector="TextBlock.category-work">
-            <Setter Property="Background" Value="#423D2B" />
-            <Setter Property="Foreground" Value="#FFD166" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-        </Style>
-
-        <Style Selector="TextBlock.category-health">
-            <Setter Property="Background" Value="#2B4237" />
-            <Setter Property="Foreground" Value="#06D6A0" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="FontSize" Value="12" />
-        </Style>
-
-        <!--  Calendar  -->
-        <Style Selector="CalendarDatePicker.custom">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
-                        <Grid ColumnDefinitions="*,Auto">
-
-                            <!--  TextBox part  -->
-                            <TextBox
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Foreground="White"
-                                Grid.Column="0"
-                                HorizontalAlignment="Stretch"
-                                Name="PART_TextBox"
-                                Padding="{TemplateBinding Padding}"
-                                Text="{TemplateBinding Text}"
-                                VerticalAlignment="Center"
-                                Watermark="{TemplateBinding Watermark}" />
-
-                            <!--  Custom Button with Icon  -->
-                            <Button
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Grid.Column="1"
-                                Height="32"
-                                Name="PART_Button"
-                                Padding="8"
-                                VerticalAlignment="Center"
-                                Width="32">
-                                <!--  Calendar Icon using Path  -->
-                                <Path
-                                    Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"
-                                    Fill="{DynamicResource SystemAccentColor}"
-                                    Height="20"
-                                    Stretch="Uniform"
-                                    Width="20" />
-                            </Button>
-
-                            <!--  Popup for Calendar  -->
-                            <Popup
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                IsLightDismissEnabled="True"
-                                Name="PART_Popup"
-                                Placement="BottomEdgeAlignedLeft"
-                                PlacementTarget="{Binding $parent[CalendarDatePicker]}">
-                                <Border
-                                    Background="{DynamicResource SystemChromeMediumColor}"
-                                    BorderBrush="{DynamicResource SystemChromeHighColor}"
-                                    BorderThickness="1"
-                                    CornerRadius="0"
-                                    Padding="4">
-                                    <Calendar Name="PART_Calendar" />
-                                </Border>
-                            </Popup>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter>
-            <Setter Property="SelectedDateFormat" Value="Custom" />
-            <Setter Property="CustomDateFormatString" Value="ddd, MMMM dd, yyyy" />
-        </Style>
-
-        <!--  Listbox  -->
-        <Style Selector="ListBox.compact ListBoxItem">
-            <Setter Property="MinHeight" Value="0" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Margin" Value="0" />
-            <Setter Property="VerticalContentAlignment" Value="Stretch" />
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <ContentPresenter
-                        Content="{TemplateBinding Content}"
-                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                        VerticalContentAlignment="Stretch" />
-                </ControlTemplate>
-            </Setter>
-        </Style>
-    </Window.Styles>
-
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
-                <GradientStop Color="#121212" Offset="0" />
-                <GradientStop Color="#1A1A1A" Offset="1" />
-            </LinearGradientBrush>
+            <StaticResource ResourceKey="BackgroundGradientBrush" />
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -288,8 +32,8 @@
 
         <!--  Header  -->
         <Border
-            Background="#6366F1"
-            BoxShadow="0 4 4 0 #6366F1"
+            Background="{StaticResource PrimaryBrush}"
+            BoxShadow="{StaticResource HeaderShadow}"
             CornerRadius="0,0,24,24"
             Grid.Row="0"
             Padding="24,10">
@@ -311,21 +55,18 @@
                         Text="StudyBuddy 🎓" />
                     <TextBlock
                         FontSize="14"
-                        Foreground="#C7D2FE"
+                        Foreground="{StaticResource PrimaryLightBrush}"
                         Text="Your personal productivity companion" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <!--  Quick Stats  -->
-                    <Border
-                        Background="#2D2D2D"
-                        CornerRadius="12"
-                        Padding="16">
+                    <Border Classes="header-card">
                         <StackPanel Spacing="8">
                             <TextBlock
                                 FontSize="16"
                                 FontWeight="Bold"
-                                Foreground="#E0E0E0"
+                                Foreground="{StaticResource TextPrimaryBrush}"
                                 HorizontalAlignment="Center"
                                 Text="Today's Progress" />
                             <Grid Margin="10,0">
@@ -338,12 +79,12 @@
                                     <TextBlock
                                         FontSize="20"
                                         FontWeight="Bold"
-                                        Foreground="WhiteSmoke"
+                                        Foreground="{StaticResource TextWhiteBrush}"
                                         HorizontalAlignment="Center"
                                         Text="{Binding TotalTasksCount}" />
                                     <TextBlock
                                         FontSize="12"
-                                        Foreground="#A0A0A0"
+                                        Foreground="{StaticResource TextSecondaryBrush}"
                                         HorizontalAlignment="Center"
                                         Text="Total" />
                                 </StackPanel>
@@ -351,12 +92,12 @@
                                     <TextBlock
                                         FontSize="20"
                                         FontWeight="Bold"
-                                        Foreground="#FF6B6B"
+                                        Foreground="{StaticResource HighPriorityColor}"
                                         HorizontalAlignment="Center"
                                         Text="{Binding PendingTasksCount}" />
                                     <TextBlock
                                         FontSize="12"
-                                        Foreground="#A0A0A0"
+                                        Foreground="{StaticResource TextSecondaryBrush}"
                                         HorizontalAlignment="Center"
                                         Text="Pending" />
                                 </StackPanel>
@@ -364,12 +105,12 @@
                                     <TextBlock
                                         FontSize="20"
                                         FontWeight="Bold"
-                                        Foreground="ForestGreen"
+                                        Foreground="{StaticResource SuccessBrush}"
                                         HorizontalAlignment="Center"
                                         Text="{Binding CompletedTasksCount}" />
                                     <TextBlock
                                         FontSize="12"
-                                        Foreground="#A0A0A0"
+                                        Foreground="{StaticResource TextSecondaryBrush}"
                                         HorizontalAlignment="Center"
                                         Text="Completed" />
                                 </StackPanel>
@@ -389,18 +130,15 @@
 
             <!--  Left Panel - Add Task  -->
             <Border
-                Background="#252525"
-                BoxShadow="0 0 4 0 #6366F1"
-                CornerRadius="16"
+                Classes="card-container"
                 Grid.Column="0"
-                Margin="0,0,12,0"
-                Padding="20">
+                Margin="0,0,12,0">
                 <ScrollViewer Margin="-15,0,-10,0" VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="8,0,20,0" Spacing="16">
                         <TextBlock
                             FontSize="20"
                             FontWeight="Bold"
-                            Foreground="#E0E0E0"
+                            Foreground="{StaticResource TextPrimaryBrush}"
                             Text="Add New Task" />
 
                         <TextBox
@@ -422,7 +160,6 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
@@ -459,10 +196,10 @@
                         <StackPanel Orientation="Vertical" Spacing="8">
                             <TextBlock FontWeight="SemiBold" Text="Due Date" />
                             <CalendarDatePicker
-                                Background="#2D2D2D"
+                                Background="{StaticResource BackgroundInputBrush}"
                                 Classes="custom"
                                 CornerRadius="12"
-                                Foreground="#E0E0E0"
+                                Foreground="{StaticResource TextPrimaryBrush}"
                                 HorizontalAlignment="Stretch"
                                 Padding="16,12"
                                 SelectedDate="{Binding NewTaskDueDate}" />
@@ -492,12 +229,9 @@
 
             <!--  Right Panel - Task List  -->
             <Border
-                Background="#252525"
-                BoxShadow="0 0 4 0 #6366F1"
-                CornerRadius="16"
+                Classes="card-container"
                 Grid.Column="1"
-                Margin="12,0,0,0"
-                Padding="20">
+                Margin="12,0,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -515,7 +249,7 @@
                         <TextBlock
                             FontSize="20"
                             FontWeight="Bold"
-                            Foreground="#E0E0E0"
+                            Foreground="{StaticResource TextPrimaryBrush}"
                             Grid.Column="0"
                             Text="Your Tasks"
                             VerticalAlignment="Center" />
@@ -525,13 +259,8 @@
                             Orientation="Horizontal"
                             Spacing="8">
                             <ComboBox
-                                Background="#2D2D2D"
-                                BorderBrush="#3E3E3E"
-                                BorderThickness="2"
-                                CornerRadius="8"
-                                Foreground="#E0E0E0"
+                                Classes="modern-combo"
                                 MinWidth="120"
-                                Padding="12,8"
                                 SelectedIndex="{Binding FilterIndex}">
                                 <ComboBoxItem Content="All Tasks" />
                                 <ComboBoxItem Content="Pending" />
@@ -549,16 +278,10 @@
 
                     <!--  Progress Bar  -->
                     <Border
-                        Background="#3E3E3E"
-                        CornerRadius="8"
+                        Classes="progress-container"
                         Grid.Row="1"
-                        Height="8"
                         Margin="0,0,0,16">
-                        <Border
-                            Background="#06D6A0"
-                            CornerRadius="8"
-                            HorizontalAlignment="Left"
-                            Width="{Binding ProgressPercentage, Converter={StaticResource ProgressToWidthConverter}}" />
+                        <Border Classes="progress-bar" Width="{Binding ProgressPercentage, Converter={StaticResource ProgressToWidthConverter}}" />
                     </Border>
 
                     <!--  Task List  -->
@@ -596,7 +319,7 @@
 
                                                 <TextBlock
                                                     FontSize="14"
-                                                    Foreground="#A0A0A0"
+                                                    Foreground="{StaticResource TextSecondaryBrush}"
                                                     Grid.Column="1"
                                                     Grid.ColumnSpan="2"
                                                     Grid.Row="1"
@@ -611,16 +334,19 @@
                                                     Orientation="Horizontal"
                                                     Spacing="8">
                                                     <TextBlock
+                                                        Classes="tag"
                                                         FontWeight="SemiBold"
                                                         Foreground="{Binding Priority, Converter={StaticResource PriorityToColorConverter}}"
                                                         Text="{Binding Priority}"
                                                         VerticalAlignment="Center" />
                                                     <TextBlock
+                                                        Classes="tag"
                                                         FontSize="12"
                                                         FontWeight="SemiBold"
                                                         Padding="8,4"
                                                         Text="{Binding Category}" />
                                                     <TextBlock
+                                                        Classes="tag"
                                                         FontSize="12"
                                                         FontWeight="SemiBold"
                                                         Foreground="{Binding DueDate, Converter={StaticResource DateToColorConverter}}"

@@ -1,0 +1,25 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Add Styles Here  -->
+    <!--  Modern ComboBox Style  -->
+    <Style Selector="ComboBox.modern-combo">
+        <Setter Property="Background" Value="{StaticResource BackgroundInputBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderPrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="16,12" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!--  Modern Checkbox Style  -->
+    <Style Selector="CheckBox.modern-check">
+        <Setter Property="Margin" Value="0,0,12,0" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+</Styles>

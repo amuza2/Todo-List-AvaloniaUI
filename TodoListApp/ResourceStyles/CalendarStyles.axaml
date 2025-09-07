@@ -1,0 +1,77 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Add Styles Here  -->
+    <!--  Custom Calendar Date Picker Style  -->
+    <Style Selector="CalendarDatePicker.custom">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid ColumnDefinitions="*,Auto">
+
+                        <!--  TextBox part  -->
+                        <TextBox
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="White"
+                            Grid.Column="0"
+                            HorizontalAlignment="Stretch"
+                            Name="PART_TextBox"
+                            Padding="{TemplateBinding Padding}"
+                            Text="{TemplateBinding Text}"
+                            VerticalAlignment="Center"
+                            Watermark="{TemplateBinding Watermark}" />
+
+                        <!--  Custom Button with Icon  -->
+                        <Button
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Grid.Column="1"
+                            Height="32"
+                            Name="PART_Button"
+                            Padding="8"
+                            VerticalAlignment="Center"
+                            Width="32">
+                            <!--  Calendar Icon using Path  -->
+                            <Path
+                                Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"
+                                Fill="{DynamicResource SystemAccentColor}"
+                                Height="20"
+                                Stretch="Uniform"
+                                Width="20" />
+                        </Button>
+
+                        <!--  Popup for Calendar  -->
+                        <Popup
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            IsLightDismissEnabled="True"
+                            Name="PART_Popup"
+                            Placement="BottomEdgeAlignedLeft"
+                            PlacementTarget="{Binding $parent[CalendarDatePicker]}">
+                            <Border
+                                Background="{DynamicResource SystemChromeMediumColor}"
+                                BorderBrush="{DynamicResource SystemChromeHighColor}"
+                                BorderThickness="1"
+                                CornerRadius="0"
+                                Padding="4">
+                                <Calendar Name="PART_Calendar" />
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="SelectedDateFormat" Value="Custom" />
+        <Setter Property="CustomDateFormatString" Value="ddd, MMMM dd, yyyy" />
+    </Style>
+
+</Styles>

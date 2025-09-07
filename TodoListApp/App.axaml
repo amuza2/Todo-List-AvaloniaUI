@@ -8,14 +8,13 @@
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.Resources>
-        <converters:BoolToTextDecorationConverter x:Key="BoolToTextDecorationConverter" />
-        <converters:BoolToForegroundConverter x:Key="BoolToForegroundConverter" />
-        <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
-        <converters:CategoryToClassConverter x:Key="CategoryToClassConverter" />
-        <converters:ProgressToWidthConverter x:Key="ProgressToWidthConverter" />
-        <converters:DateTimeToNullableConverter x:Key="DateTimeToNullableConverter" />
-        <converters:PriorityToColorConverter x:Key="PriorityToColorConverter" />
-        <converters:DateToColorConverter x:Key="DateToColorConverter" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/ResourceStyles/Brushes.axaml" />
+                <ResourceInclude Source="/ResourceStyles/Colors.axaml" />
+                <ResourceInclude Source="/Converters/Converters.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 
     <Application.DataTemplates>
@@ -25,55 +24,12 @@
 
     <Application.Styles>
         <FluentTheme />
-
-        <!--  Custom Application Styles  -->
-        <!-- <Style Selector="Window"> -->
-        <!--     <Setter Property="FontFamily" Value="Segoe UI, Arial, sans-serif" /> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!--  ~1~  Scrollbar Styling  @1@  -->
-        <!-- <Style Selector="ScrollViewer"> -->
-        <!--     <Setter Property="AllowAutoHide" Value="True" /> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!--  ~1~  ComboBox Styling  @1@  -->
-        <!-- <Style Selector="ComboBox"> -->
-        <!--     <Setter Property="Cursor" Value="Hand" /> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!--  ~1~  DatePicker Styling  @1@  -->
-        <!-- <Style Selector="DatePicker"> -->
-        <!--     <Setter Property="Cursor" Value="Hand" /> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!--  ~1~  Checkbox custom styling  @1@  -->
-        <!-- <Style Selector="CheckBox"> -->
-        <!--     <Setter Property="Transitions"> -->
-        <!--         <Transitions> -->
-        <!--             <TransformOperationsTransition Duration="0:0:0.2" Property="RenderTransform" /> -->
-        <!--         </Transitions> -->
-        <!--     </Setter> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!-- <Style Selector="CheckBox:pointerover"> -->
-        <!--     <Setter Property="RenderTransform" Value="scale(1.1)" /> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!--  ~1~  Enhanced hover effects for interactive elements  @1@  -->
-        <!-- <Style Selector="ComboBox:pointerover"> -->
-        <!--     <Setter Property="BorderBrush" Value="#6366F1" /> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!--  ~1~  Smooth transitions for all interactive elements  @1@  -->
-        <!-- <Style Selector="ComboBox, TextBox"> -->
-        <!--     <Setter Property="Transitions"> -->
-        <!--         <Transitions> -->
-        <!--             <BrushTransition Duration="0:0:0.2" Property="BorderBrush" /> -->
-        <!--             <BrushTransition Duration="0:0:0.2" Property="Background" /> -->
-        <!--         </Transitions> -->
-        <!--     </Setter> -->
-        <!-- </Style> -->
-
-
+        <StyleInclude Source="/ResourceStyles/ButtonStyles.axaml" />
+        <StyleInclude Source="/ResourceStyles/TextBoxStyles.axaml" />
+        <StyleInclude Source="/ResourceStyles/ComboBoxStyles.axaml" />
+        <StyleInclude Source="/ResourceStyles/CalendarStyles.axaml" />
+        <StyleInclude Source="/ResourceStyles/ListBoxStyles.axaml" />
+        <StyleInclude Source="/ResourceStyles/TaskCardStyles.axaml" />
+        <StyleInclude Source="/ResourceStyles/PriorityAndCategoryStyles.axaml" />
     </Application.Styles>
 </Application>
