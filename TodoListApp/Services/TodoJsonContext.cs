@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using TodoListApp.Converters;
 using TodoListApp.Models;
 
 namespace TodoListApp.Services;
@@ -13,7 +12,8 @@ namespace TodoListApp.Services;
 [JsonSourceGenerationOptions(
     WriteIndented = true,
     PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+    Converters = [typeof(JsonStringEnumConverter<TaskCategory>), typeof(JsonStringEnumConverter<TaskPriority>)])]
 public partial class TodoJsonContext : JsonSerializerContext
 {
 }

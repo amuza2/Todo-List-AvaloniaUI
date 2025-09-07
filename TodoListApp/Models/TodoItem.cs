@@ -1,64 +1,105 @@
 using System;
 using System.Text.Json.Serialization;
-using CommunityToolkit.Mvvm.ComponentModel;
 using TodoListApp.ViewModels;
 
 namespace TodoListApp.Models;
 
 public partial class TodoItem : ViewModelBase
 {
-    [ObservableProperty]
-    [JsonPropertyName("id")]
     private int _id;
-    
-    [ObservableProperty]
-    [JsonPropertyName("title")]
     private string _title = string.Empty;
-
-    [ObservableProperty]
-    [JsonPropertyName("description")]
     private string _description = string.Empty;
-
-    [ObservableProperty]
-    [JsonPropertyName("isCompleted")]
     private bool _isCompleted;
-
-    [ObservableProperty]
-    [JsonPropertyName("dueDate")]
     private DateTime _dueDate = DateTime.Today;
-
-    [ObservableProperty]
-    [JsonPropertyName("priority")]
     private TaskPriority _priority = TaskPriority.Medium;
-
-    [ObservableProperty]
-    [JsonPropertyName("category")]
     private TaskCategory _category = TaskCategory.Academic;
-
-    [ObservableProperty]
-    [JsonPropertyName("createdDate")]
     private DateTime _createdDate = DateTime.Now;
-    
-    
-    [ObservableProperty] [property: JsonIgnore] private bool _isSelected;
-    
+    private bool _isSelected;
+
+    [JsonPropertyName("id")]
+    public int Id
+    {
+        get => _id;
+        set => SetProperty(ref _id, value);
+    }
+
+    [JsonPropertyName("title")]
+    public string Title
+    {
+        get => _title;
+        set => SetProperty(ref _title, value);
+    }
+
+    [JsonPropertyName("description")]
+    public string Description
+    {
+        get => _description;
+        set => SetProperty(ref _description, value);
+    }
+
+    [JsonPropertyName("isCompleted")]
+    public bool IsCompleted
+    {
+        get => _isCompleted;
+        set
+        {
+            if (SetProperty(ref _isCompleted, value))
+            {
+                OnPropertyChanged(nameof(IsOverdue));
+                OnPropertyChanged(nameof(IsDueSoon));
+            }
+        }
+    }
+
+    [JsonPropertyName("dueDate")]
+    public DateTime DueDate
+    {
+        get => _dueDate;
+        set
+        {
+            if (SetProperty(ref _dueDate, value))
+            {
+                OnPropertyChanged(nameof(IsOverdue));
+                OnPropertyChanged(nameof(IsDueToday));
+                OnPropertyChanged(nameof(IsDueSoon));
+            }
+        }
+    }
+
+    [JsonPropertyName("priority")]
+    public TaskPriority Priority
+    {
+        get => _priority;
+        set => SetProperty(ref _priority, value);
+    }
+
+    [JsonPropertyName("category")]
+    public TaskCategory Category
+    {
+        get => _category;
+        set => SetProperty(ref _category, value);
+    }
+
+    [JsonPropertyName("createdDate")]
+    public DateTime CreatedDate
+    {
+        get => _createdDate;
+        set => SetProperty(ref _createdDate, value);
+    }
+
+    [JsonIgnore]
+    public bool IsSelected
+    {
+        get => _isSelected;
+        set => SetProperty(ref _isSelected, value);
+    }
+
     [JsonIgnore]
     public bool IsOverdue => !IsCompleted && DueDate < DateTime.Today;
+    
     [JsonIgnore]
     public bool IsDueToday => DueDate.Date == DateTime.Today;
+    
     [JsonIgnore]
     public bool IsDueSoon => !IsCompleted && DueDate <= DateTime.Today.AddDays(3) && DueDate >= DateTime.Today;
-
-    partial void OnIsCompletedChanged(bool value)
-    {
-        OnPropertyChanged(nameof(IsOverdue));
-        OnPropertyChanged(nameof(IsDueSoon));
-    }
-
-    partial void OnDueDateChanged(DateTime value)
-    {
-        OnPropertyChanged(nameof(IsOverdue));
-        OnPropertyChanged(nameof(IsDueToday));
-        OnPropertyChanged(nameof(IsDueSoon));
-    }
 }

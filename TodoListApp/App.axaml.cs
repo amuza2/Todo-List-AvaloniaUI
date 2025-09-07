@@ -18,14 +18,10 @@ namespace TodoListApp;
 
 public partial class App : Application
 {
+    private IServiceProvider _services;
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-    }
-
-    public override void OnFrameworkInitializationCompleted()
-    {
-        BindingPlugins.DataValidators.RemoveAt(0);
         
         var collection = new ServiceCollection();
         
@@ -39,19 +35,17 @@ public partial class App : Application
             builder.SetMinimumLevel(LogLevel.Information);
         });
         
-        collection.AddSingleton<IJsonDataService>(p =>
-            new JsonDataService(p.GetRequiredService<ILogger<JsonDataService>>()
-                ));
-        
+        collection.AddSingleton<IJsonDataService, JsonDataService>();
         collection.AddSingleton<MainWindowViewModel>();
         
-        
-        var services = collection.BuildServiceProvider();
-        var vm = services.GetRequiredService<MainWindowViewModel>();
-        
+        _services = collection.BuildServiceProvider();
+    }
+
+    public override void OnFrameworkInitializationCompleted()
+    {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            DisableAvaloniaDataAnnotationValidation();
+            var vm = _services.GetRequiredService<MainWindowViewModel>();
             desktop.MainWindow = new MainWindow
             {
                 DataContext = vm,

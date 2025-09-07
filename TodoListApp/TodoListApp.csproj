@@ -1,5 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
+        <PublishAot>true</PublishAot>
+        <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+        <TrimMode>link</TrimMode>
+        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
+        <EnableAvaloniaDataAnnotations>false</EnableAvaloniaDataAnnotations>
+       
         <OutputType>WinExe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
@@ -26,6 +32,15 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.8" />
+        <PackageReference Include="runtime.linux-x64.Microsoft.DotNet.ILCompiler" Version="9.0.8" />
+
+
+        <!-- Preserve essential assemblies -->
+        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
+
+        <!-- Preserve application types -->
+        <TrimmerRootAssembly Include="TodoListApp" />
+        
         <PackageReference Include="StaticViewLocator" Version="0.0.1">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
