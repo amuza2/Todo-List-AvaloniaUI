@@ -8,23 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf09e665-d44e-47bf-9260-bc39d947a2e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TodoListApp/Converters/Converters.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/Brushes.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/ButtonStyles.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/CalendarStyles.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/Colors.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/ComboBoxStyles.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/ListBoxStyles.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/PriorityAndCategoryStyles.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/TaskCardStyles.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TodoListApp/ResourceStyles/TextBoxStyles.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoListApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/Converters/CategoryToClassConverter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/Converters/DateTimeToNullableConverter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/TodoListApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/TodoListApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoListApp/Views/MainWindow.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +109,7 @@
       <workItem from="1756981234874" duration="4775000" />
       <workItem from="1756997109259" duration="28458000" />
       <workItem from="1757119426424" duration="30711000" />
-      <workItem from="1757243813333" duration="6003000" />
+      <workItem from="1757243813333" duration="7118000" />
     </task>
     <servers />
   </component>
