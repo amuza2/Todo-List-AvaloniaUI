@@ -5,4 +5,5 @@ riderModule.iml
 /_ReSharper.Caches/
 .idea/
 .idea/.idea.TodoListApp/.idea/
+*.DotSettings.user
 
