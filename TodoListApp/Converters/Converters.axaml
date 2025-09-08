@@ -10,4 +10,5 @@
     <converters:PriorityToColorConverter x:Key="PriorityToColorConverter" />
     <converters:DateToColorConverter x:Key="DateToColorConverter" />
     <converters:ProgressToWidthConverter x:Key="ProgressToWidthConverter" />
+    <converters:StringToBitmapConverter x:Key="StringToBitmapConverter" />
 </ResourceDictionary>
