@@ -60,6 +60,9 @@ public partial class App : Application
             _mainWindow.Closing += OnMainWindowClosing;
             
             CreateTrayIcon();
+
+            if(_toggleMenuItem != null)
+                _toggleMenuItem.Header = "Hide";
         }
         
         base.OnFrameworkInitializationCompleted();
