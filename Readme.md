@@ -7,30 +7,10 @@ A colorful, engaging, and student-friendly todo list application.
 
 ## Screenshots
 
-<img width="1032" height="859" alt="image" src="https://github.com/user-attachments/assets/f7b4ef0a-b9a2-4858-95e8-a0d31449d3db" />
+<img width="904" height="737" alt="image" src="https://github.com/user-attachments/assets/ca8417d5-7135-4462-9b92-86e7966f60b3" />
 
+<img width="215" height="166" alt="image" src="https://github.com/user-attachments/assets/d667b596-a40f-4b95-a151-dbce800fc582" />
 
-## Features
-
-### Core Functionality
-- **Add Tasks**: Create tasks with titles, descriptions, due dates, priorities, and categories
-- **Task Management**: Mark tasks as complete, delete tasks, and filter tasks
-- **Smart Filtering**: View all tasks, pending tasks, completed tasks, or high-priority tasks
-- **Progress Tracking**: Visual progress bar and statistics showing completion status
-
-### Student-Friendly Design
-- **Colorful Interface**: Vibrant gradients and modern color scheme
-- **Engaging UI**: Playful emojis and student-focused terminology
-- **Priority System**: Visual priority indicators (High, Medium, Low)
-- **Category Organization**: Academic, Work, Personal, and Health categories
-- **Smooth Animations**: Hover effects, transitions, and micro-interactions
-
-### Technical Features
-- **MVVM Architecture**: Clean separation of concerns using CommunityToolkit.Mvvm
-- **Responsive Design**: Scales beautifully across different screen sizes
-- **Modern UI Components**: Custom-styled buttons, inputs, and cards
-- **Real-time Updates**: Live statistics and progress tracking
-- **Cross-Platform**: Runs on Windows, macOS, and Linux
 
 ## Getting Started
 
