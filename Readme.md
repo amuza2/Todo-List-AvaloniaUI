@@ -1,6 +1,6 @@
 # StudyBuddy Student Todo App
 
-![Avalonia](https://img.shields.io/badge/Avalonia-UI-blue)  ![MVVM](https://img.shields.io/badge/MVVM-Community_Toolkit-green)  ![MVVM](https://img.shields.io/badge/MVVM-Community_Toolkit-green)  ![Cross-Platform](https://img.shields.io/badge/Cross--Platform-orange)
+![Avalonia](https://img.shields.io/badge/Avalonia-UI-blue)  ![MVVM](https://img.shields.io/badge/MVVM-Community_Toolkit-green)  ![Cross-Platform](https://img.shields.io/badge/Cross--Platform-orange) ![Linux](https://img.shields.io/badge/Linux-yellow) ![Windows](https://img.shields.io/badge/Windows-blue)
 
 
 A colorful, engaging, and student-friendly todo list application.
