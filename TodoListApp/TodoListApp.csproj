@@ -41,7 +41,7 @@
         <!-- Preserve application types -->
         <TrimmerRootAssembly Include="TodoListApp" />
         
-        <PackageReference Include="StaticViewLocator" Version="0.0.1">
+        <PackageReference Include="StaticViewLocator" Version="0.1.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
