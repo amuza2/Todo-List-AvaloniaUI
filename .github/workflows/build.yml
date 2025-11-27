@@ -39,7 +39,7 @@ jobs:
           -o ./publish/linux-x64
     
     - name: Upload Linux artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: StudyBuddy-Linux-x64
         path: publish/linux-x64/TodoListApp
@@ -71,7 +71,7 @@ jobs:
           -o ./publish/win-x64
     
     - name: Upload Windows artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: StudyBuddy-Windows-x64
         path: publish/win-x64/TodoListApp.exe
@@ -145,7 +145,7 @@ jobs:
         ARCH=x86_64 ./appimagetool-x86_64.AppImage TodoListApp.AppDir StudyBuddy-x86_64.AppImage
     
     - name: Upload AppImage artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: StudyBuddy-AppImage
         path: StudyBuddy-x86_64.AppImage
