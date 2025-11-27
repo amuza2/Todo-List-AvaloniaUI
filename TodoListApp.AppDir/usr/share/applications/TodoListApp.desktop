@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=StudyBuddy
+Exec=TodoListApp
+Icon=todolistapp
+Type=Application
+Categories=Utility;Office;Education;
+Comment=Your personal productivity companion
+Terminal=false
+StartupWMClass=TodoListApp

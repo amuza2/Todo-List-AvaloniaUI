@@ -28,7 +28,10 @@ public partial class App : Application
         
         var collection = new ServiceCollection();
         
-        var logsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs");
+        // Use user's home directory for logs (AppImage-compatible)
+        var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        var appDataDirectory = Path.Combine(homeDirectory, ".todoapp");
+        var logsDirectory = Path.Combine(appDataDirectory, "logs");
         Directory.CreateDirectory(logsDirectory);
         
         collection.AddLogging(builder =>

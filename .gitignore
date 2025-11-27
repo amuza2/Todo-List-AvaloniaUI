@@ -1,9 +1,50 @@
+## Build outputs
 bin/
 obj/
 /packages/
+
+## IDE files
 riderModule.iml
 /_ReSharper.Caches/
 .idea/
 .idea/.idea.TodoListApp/.idea/
 *.DotSettings.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
+## Publish/Deployment outputs
+publish/
+build-dir/
+repo/
+squashfs-root/
+*.AppImage
+*.flatpak
+*.deb
+*.rpm
+*.zip
+*.tar.gz
+
+## AppImage build tools
+appimagetool
+appimagetool-*.AppImage
+
+## Application data (user data)
+.todoapp/
+
+## Logs
+logs/
+*.log
+
+## OS files
+.DS_Store
+Thumbs.db
+*~
+.directory
+
+## Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
