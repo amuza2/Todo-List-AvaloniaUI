@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# AppRun script for TodoListApp
+SELF=$(readlink -f "$0")
+HERE=${SELF%/*}
+
+# Export library paths
+export LD_LIBRARY_PATH="${HERE}/usr/lib:${HERE}/usr/bin:${LD_LIBRARY_PATH}"
+export PATH="${HERE}/usr/bin:${PATH}"
+
+# Set data directory to user's home to avoid read-only filesystem issues
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+# Change to user's home directory (not the AppImage mount point)
+cd "$HOME"
+
+# Run the application
+exec "${HERE}/usr/bin/TodoListApp" "$@"
